@@ -130,6 +130,10 @@ button#startTrivia:hover {
   	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
+h2.questionnumberdone {
+	text-decoration: none;
+} 
+
 h2.questionnumber {
 	text-decoration: underline;
 } 
@@ -188,7 +192,7 @@ label.button:hover {
 }
 
 div.score {
-	width: 320px;
+	width: 290px;
 	height: 30px;
 	background-color: rgba(255, 255, 255, 0.3);
 	z-index: 40;
