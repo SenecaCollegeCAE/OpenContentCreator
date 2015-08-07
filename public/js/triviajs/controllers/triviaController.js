@@ -1,31 +1,21 @@
-app.controller('triviaController', function($scope, $rootScope, $location, triviaFactory) {
+app.controller('triviaController', function($scope, $rootScope, $location, $timeout, triviaQuestionFactory, triviaRandomizeFactory) {
 
 	$scope.animating = true;
 
 	$scope.loadQuestion = function() {
+		$scope.options = [];
 		$rootScope.questionNumber++;
 		console.log($rootScope.questionNumber);
-		var random = [];
+		$scope.clickDisabled = false;
 		
-		var q = triviaFactory.getAQuestion($rootScope.questionNumber - 1);
-		$scope.question = q.question;
-		
+		var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber - 1);
+		$scope.question = q.question;	
 		$scope.correctAnswer = q.correctAnswer;
-		var tempArray = [];
-		var tempNumber = 4;
 		
-		tempArray.push(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, q.correctAnswer);
-		
-		for(var i = 0; i < 4; i++) {
-			var randomNumber = Math.floor(Math.random() * tempNumber); //get a random number 0 - 3
-			var tempItem = tempArray[randomNumber]; //get the element from the random number
-					
-			tempArray.splice(randomNumber, 1);
-			random.push(tempItem);
-			tempNumber--;
-		}
-		
-		$scope.options = random;
+		var random = triviaRandomizeFactory.getAnswersAndRandomize(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, q.correctAnswer);
+		triviaRandomizeFactory.clearAndReset();
+
+		$scope.options = random; 
 	};
 	
 	$scope.answerMode = true;
@@ -33,11 +23,20 @@ app.controller('triviaController', function($scope, $rootScope, $location, trivi
 		
 		if(choice == $scope.correctAnswer) {
 			$scope.correctAns = true;
+			$scope.clickDisabled = true;
 			//$scope.loadQuestion();
-			$location.path('/triviaSecond');
+			
+			if($rootScope.scoreType == "dollars" || $rootScope.scoreType == "points")
+				$rootScope.score += 100;
+			else 
+				$rootScope.score += 1;
+			
+			$timeout(function() { $location.path('/triviaSecond'); }, 2500);
 		}
 		else {
 			$scope.correctAns = false;
+			$scope.clickDisabled = true;
+			$timeout(function() { $location.path('/triviaSecond'); }, 2500);
 		}
 		
 		$scope.answerMode = false; //display the correct or not correct message

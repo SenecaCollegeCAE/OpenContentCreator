@@ -1,28 +1,17 @@
-app.controller('triviaSecondController', function($scope, $rootScope, $location, triviaFactory) {
+app.controller('triviaSecondController', function($scope, $rootScope, $location, $timeout, triviaQuestionFactory, triviaRandomizeFactory) {
 
 	$scope.animating = true;
 	$scope.loadQuestion = function() {
 		$rootScope.questionNumber++;
 		console.log($rootScope.questionNumber);
-		var random = [];
+		$scope.clickDisabled = false;
 		
-		var q = triviaFactory.getAQuestion($rootScope.questionNumber - 1);
-		$scope.question = q.question;
-		
+		var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber - 1);
+		$scope.question = q.question;		
 		$scope.correctAnswer = q.correctAnswer;
-		var tempArray = [];
-		var tempNumber = 4;
-		
-		tempArray.push(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, q.correctAnswer);
-		
-		for(var i = 0; i < 4; i++) {
-			var randomNumber = Math.floor(Math.random() * tempNumber); //get a random number 0 - 3
-			var tempItem = tempArray[randomNumber]; //get the element from the random number
-					
-			tempArray.splice(randomNumber, 1);
-			random.push(tempItem);
-			tempNumber--;
-		}
+
+		var random = triviaRandomizeFactory.getAnswersAndRandomize(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, q.correctAnswer);
+		triviaRandomizeFactory.clearAndReset();
 		
 		$scope.options = random;
 	};
@@ -32,10 +21,19 @@ app.controller('triviaSecondController', function($scope, $rootScope, $location,
 		
 		if(choice == $scope.correctAnswer) {
 			$scope.correctAns = true;
-			$location.path('/trivia');
+			$scope.clickDisabled = true;
+			
+			if($rootScope.scoreType == "dollars" || $rootScope.scoreType == "points")
+				$rootScope.score += 100;
+			else 
+				$rootScope.score += 1;
+			
+			$timeout(function() { $location.path('/trivia'); }, 2500);
 		}
 		else {
 			$scope.correctAns = false;
+			$scope.clickDisabled = true;
+			$timeout(function() { $location.path('/trivia'); }, 2500);
 		}
 		
 		$scope.answerMode = false; //display the correct or not correct message
