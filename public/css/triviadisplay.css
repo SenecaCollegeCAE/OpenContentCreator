@@ -42,6 +42,18 @@ body {
 	margin-top: 666px;
 }
 
+a:link, a:visited, a:active {
+    color: #000000;
+}
+
+a:hover {
+    color: #FFFFFF;
+}
+
+a.license:hover {
+	color: #000000;
+}
+
 hr {
 	border: 0;
     height: 2px;
@@ -150,6 +162,7 @@ label.button {
 	vertical-align: middle;
 	cursor: pointer;
 	font-size: 11pt;
+	border-radius: 8px;
 }
 
 label.button:hover {
@@ -172,6 +185,33 @@ label.button:hover {
 	z-index: 40;
 	padding: 0;
 	margin-top: -15px;
+}
+
+div.score {
+	width: 320px;
+	height: 30px;
+	background-color: rgba(255, 255, 255, 0.3);
+	z-index: 40;
+	dispaly: inline-block;
+	float: left;
+	padding: 10px;
+	padding-top: 20px;
+	text-align: middle;
+}
+
+div.feedback > span  {
+	font-size: 14pt;
+}
+
+div.feedback {
+	width: 320px;
+	height: 35px;
+	background-color: rgba(255, 255, 255, 0.3);
+	z-index: 40;
+	dispaly: inline-block;
+	float: right;
+	padding: 5px;
+	padding-top: 20px;
 }
 
 /********** angularjs animation ****************/
