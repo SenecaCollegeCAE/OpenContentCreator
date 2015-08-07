@@ -1,21 +1,25 @@
-app.controller('triviaController', function($scope, $rootScope, $location, $timeout, triviaQuestionFactory, triviaRandomizeFactory) {
+app.controller('triviaController', function($scope, $rootScope, $location, $timeout, $route, triviaQuestionFactory, triviaRandomizeFactory) {
 
 	$scope.animating = true;
+	$scope.questionActive = true;
 
 	$scope.loadQuestion = function() {
-		$scope.options = [];
-		$rootScope.questionNumber++;
-		console.log($rootScope.questionNumber);
-		$scope.clickDisabled = false;
-		
-		var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber - 1);
-		$scope.question = q.question;	
-		$scope.correctAnswer = q.correctAnswer;
-		
-		var random = triviaRandomizeFactory.getAnswersAndRandomize(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, q.correctAnswer);
-		triviaRandomizeFactory.clearAndReset();
-
-		$scope.options = random; 
+		if($rootScope.questionNumber < triviaQuestionFactory.getTotalQuestions()) {
+			var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber);		
+			$rootScope.questionNumber++;
+			console.log($rootScope.questionNumber);
+			$scope.clickDisabled = false;
+			
+			$scope.question = q.question;	
+			$scope.correctAnswer = q.correctAnswer;
+			
+			var random = triviaRandomizeFactory.getAnswersAndRandomize(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, q.correctAnswer);
+			triviaRandomizeFactory.clearAndReset();
+	
+			$scope.options = random;
+		}
+		else
+			$scope.questionActive = false;
 	};
 	
 	$scope.answerMode = true;
@@ -31,14 +35,18 @@ app.controller('triviaController', function($scope, $rootScope, $location, $time
 			else 
 				$rootScope.score += 1;
 			
-			$timeout(function() { $location.path('/triviaSecond'); }, 2500);
+			$timeout(function() { $location.path('/triviaSecond'); }, 2000);
 		}
 		else {
 			$scope.correctAns = false;
 			$scope.clickDisabled = true;
-			$timeout(function() { $location.path('/triviaSecond'); }, 2500);
+			$timeout(function() { $location.path('/triviaSecond'); }, 2000);
 		}
 		
 		$scope.answerMode = false; //display the correct or not correct message
+	};
+	
+	$scope.playAgain = function() {
+		$route.reload();
 	};
 });

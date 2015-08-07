@@ -15,7 +15,7 @@ app.controller('homeController', function($scope, $rootScope, $location, triviaQ
 		$rootScope.scoreType = sType;
 	};
 	
-	$scope.startTrivia = function(randomized, sType) {	
+	$scope.startTrivia = function(randomized, sType) {		
 		for(var i = 0; i < randomized.length; i++) {
 			triviaQuestionFactory.setIntoAQuestion("question", randomized[i][0]);
 			triviaQuestionFactory.setIntoAQuestion("correctAnswer", randomized[i][1]);
