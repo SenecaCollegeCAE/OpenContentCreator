@@ -1,0 +1,756 @@
+body {
+    text-align: center;
+    font-size: 10pt;
+    font-family: "Helvetica", sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background: transparent;
+    background-color: #FFFFFF;
+    color: #000000;
+    overflow-y: auto;
+}
+
+a:link, a:visited, a:active {
+    color: #000000;
+}
+
+a:hover {
+    color: #FF0000;
+}
+
+h4 {
+    text-decoration: underline;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="url"], select, textarea, input[type="radio"] {
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+  	background-color: #fff;
+  	background-image: -webkit-gradient(linear, left top, left bottom, from(#edf3f9), to(#fff));
+  	background-image: -webkit-linear-gradient(top, #edf3f9, #fff);
+  	background-image: -moz-linear-gradient(top, #edf3f9, #fff);
+  	background-image: -ms-linear-gradient(top, #edf3f9, #fff);
+  	background-image: -o-linear-gradient(top, #edf3f9, #fff);
+  	background-image: linear-gradient(top, #edf3f9, #fff);
+  	border: 1px solid;
+  	border-color: #abbce8 #c3cae0 #b9c8ef;
+  	-webkit-border-radius: 4px;
+  	-moz-border-radius: 4px;
+  	border-radius: 4px;
+  	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  	-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  	-webkit-transition: all 0.25s linear;
+  	-moz-transition: all 0.25s linear;
+  	transition: all 0.25s linear;
+  	font-size: 1.1em;
+  	padding: 5px 4px;
+}
+
+textarea {
+	resize: none;
+    text-align: left;
+    width: 438px;
+    height: 100px;
+}
+
+input[type="submit"], input[type="file"], button.add_field_button, button.remove_image, button.save_trivia_button { 
+  	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	box-sizing: border-box;
+  	display: inline-block;
+  	outline: 0;
+  	border: 0;
+  	color: #edf4f9;
+  	text-decoration: none;
+  	background-color: #404040;
+  	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  	font-size: 1.1em;
+  	font-weight: bold;
+  	padding: 5px 10px 5px 10px;
+  	line-height: normal;
+  	text-align: center;
+  	vertical-align: middle;
+  	cursor: pointer;
+  	text-transform: uppercase;
+  	text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+  	-webkit-border-radius: 3px;
+  	-moz-border-radius: 3px;
+  	border-radius: 3px;
+  	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"]:hover {
+  	color: #fff;
+  	background-color: #686868;
+}
+
+input[type="submit"]:active {
+  	-webkit-box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+  	-moz-box-shadow:inset 0 1px 5px rgba(0, 0, 0, 0.1);
+  	box-shadow:inset 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#arrowUp {
+ 	position: fixed;
+ 	height: auto;
+ 	width: auto;
+ 	right: 10px;
+ 	top: 10px;
+  	font-size: 48px;
+}
+
+#arrowUp > a {
+	text-decoration: none;
+}
+
+/**************************** index.php *************************/
+
+/* The index.php splash screen boxes */
+
+#loginsplash {
+    margin: 0 auto;
+    margin-top: 50px;
+    background: url(../img/layout/splash.png);
+    background-position: center top;
+    background-repeat: no-repeat;
+    width: 800px;
+    height: 509px;
+    postition: absolute;
+}
+
+#loginboxpos {
+    padding-top: 108px;
+    padding-left: 222px;
+    text-align: left;
+}
+
+h2.logintitle {
+    line-height: 14pt;
+}
+
+p.loginleading {
+    line-height: 2pt;
+}
+
+p.loginerror, h2#passwordChange {
+    color: #FF0000;
+}
+
+/** register.php, forgotpassword.php, registersuccess.php, terms.php, search.php *************************/
+
+#logoplacement {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 100%;
+    position: absolute;
+}
+
+div.registererrormsg { /*made the div an id because it has font properties */
+    margin-top: -10px;
+    padding-left: 124px;
+    color: #FF0000;
+}
+
+div.registerform, div.termsbox, div.searchbox {
+	padding-top: 100px;
+	text-align: center;
+}
+
+fieldset.registerform {
+	width: 500px;
+	margin: auto;
+	padding-left: 80px;
+	text-align: left;
+	background-color: #F8F8F8;
+	padding-top: 15px;
+}
+
+fieldset.termsbox {
+	width: 800px;
+	margin: auto;
+	padding-left: 80px;
+	padding-right: 80px;
+	text-align: left;
+	background-color: #F8F8F8;
+	padding-top: 15px;
+}
+
+fieldset.searchbox {
+	width: 550px;
+	margin: auto;
+	padding-left: 60px;
+	padding-right: 60px;
+	text-align: left;
+	background-color: #F8F8F8;
+	padding-top: 15px;
+}
+
+fieldset > legend.registerform, fieldset > legend.termsbox, fieldset > legend.searchbox {
+	font-weight: bold;
+}
+
+span.registerform {
+	padding-left: 56px;
+}
+
+div.forgotpassworderrormsg {
+    margin-top: -10px;
+    padding-left: 100px;
+    color: #FF0000;
+}
+
+div.searcherrormsg { 
+    margin-top: 10px;
+    color: #FF0000;
+}
+
+/***************** navigation layout for all login-ed pages ******************/
+
+#navigationbar {
+	background-color: #F8F8F8;
+	width: 100%;
+	height: 80px;
+	text-align: center;
+	padding-top: 7px;
+	position: relative;
+}
+
+#navigationbarwrapper {
+	width: 1000px;
+	text-align: inherit; /* inherits the parent text-align */
+	height: 53px;
+	margin-top: 10px;
+	display: inline-block;
+}
+
+#navigationcell {
+	width: 333px;
+	height: 48px;
+	float: left;
+}
+
+#navigationtext {
+	top: 15px;
+	position: relative;
+	left: -43px;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+#navigationspacer {
+	width: 120px;
+	height: 48px;
+	display: inline-block;
+	float: left;
+}
+
+#navigationbutton {
+	float: left;
+	width: 60px;
+}
+
+a.changepassword {
+	border: 0px;
+	background: transparent url("../img/layout/changepassbtn.png") no-repeat center top;
+	width: 48px;
+	height: 48px;
+	display: block;
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+	filter: gray; /* IE 6 -9 */
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+}
+
+a.help {
+	border: 0px;
+	background: transparent url("../img/layout/helpbtn.png") no-repeat center top;
+	width: 48px;
+	height: 48px;
+	display: block;
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+	filter: gray; /* IE 6 -9 */
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+}
+
+a.logout {
+	border: 0px;
+	background: transparent url("../img/layout/logoutbtn.png") no-repeat center top;
+	width: 48px;
+	height: 48px;
+	display: block;
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+	filter: gray; /* IE 6 -9 */
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+}
+
+a.changepassword:hover, a.help:hover, a.logout:hover {
+	filter: grayscale(0%);
+	-webkit-filter: grayscale(0%);
+	filter: none;
+}
+
+/* POPUP Modal CSS */
+
+#lean_overlay {
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+#loginmodal {
+  	width: 1024px;
+  	height: 500px;
+  	padding: 15px 20px;
+  	background: #fefefe;
+  	-webkit-border-radius: 3px;
+  	-moz-border-radius: 3px;
+  	border-radius: 3px;
+  	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  	-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  	border: rgba(0, 0, 0, 0.5) solid 15px;
+  	overflow-y: auto;
+  	overflow-x: hidden;
+  	text-align: left;
+  	-moz-background-clip: padding;     /* Firefox 3.6 */
+	-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+	background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */				 
+}
+
+#changepasswordmodal {
+	width: 500px;
+	height: 410px;
+	padding: 15px 20px;
+	background: #fefefe;
+	-webkit-border-radius: 3px;
+  	-moz-border-radius: 3px;
+  	border-radius: 3px;
+  	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  	-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  	border: rgba(0, 0, 0, 0.5) solid 15px;
+  	text-align: left;
+  	-moz-background-clip: padding;     /* Firefox 3.6 */
+	-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+	background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */	
+}
+
+.hide_modal {
+	color: #000000;
+	line-height: 25px;
+	position: absolute;
+	right: 45px;
+	text-align: center;
+	top: 5px;
+	width: 24px;
+	text-decoration: none;
+	font-size: 12pt;
+	z-index: 20;
+}
+
+
+#loginmodal > ol > li {
+	padding: 0 0 10px 0;
+}
+
+.modaltitle {
+	color: #ff0000;
+}
+
+.labelfield { 
+  	display: block;
+  	padding: 6px 5px;
+  	margin-bottom: 15px;
+  	font-family: 'Helvetica Neue', Helvetica, Verdana, sans-serif;
+  	color: #7988a3;
+  	font-size: 1.4em;
+  	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+  	background-color: #fff;
+  	background-image: -webkit-gradient(linear, left top, left bottom, from(#edf3f9), to(#fff));
+  	background-image: -webkit-linear-gradient(top, #edf3f9, #fff);
+  	background-image: -moz-linear-gradient(top, #edf3f9, #fff);
+  	background-image: -ms-linear-gradient(top, #edf3f9, #fff);
+  	background-image: -o-linear-gradient(top, #edf3f9, #fff);
+  	background-image: linear-gradient(top, #edf3f9, #fff);
+  	border: 1px solid;
+  	border-color: #abbce8 #c3cae0 #b9c8ef;
+  	-webkit-border-radius: 4px;
+  	-moz-border-radius: 4px;
+  	border-radius: 4px;
+  	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  	-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.4);
+  	-webkit-transition: all 0.25s linear;
+  	-moz-transition: all 0.25s linear;
+  	transition: all 0.25s linear;
+}
+
+div.forgotpassworderrormsg2, div.forgotpassworderrormsg3, div.forgotpassworderrormsg4 {
+	color: #FF0000;	
+}
+
+/****************** activity.php ******************/
+
+div#alert {
+	color: #FF0000;
+	width: 100%;
+	background-color: #909090;
+	font-size: 12pt;
+	font-weight: bold;
+	height: 25px;
+	padding-top: 5px;
+}
+
+div.maintable {
+	display: inline-block;
+	width: 1000px;
+	text-align: center;
+	padding: 0px;
+	padding-top: 40px;
+	vertical-align: top;
+}
+
+div.leftcell {
+	display: inline-block;
+	width: 50%;
+	height: 90%;
+	text-align: left;
+	vertical-align: top;
+	border-right: 2pt dashed rgb(160, 160, 160);
+}
+
+div.leftcell1 {
+	display: inline-block;
+	width: 55%;
+	text-align: left;
+	vertical-align: top;
+}
+
+div.leftcell2 {
+	display: inline-block;
+	width: 40%;
+	text-align: left;
+	vertical-align: top;
+}
+
+div.rightcell {
+	display: inline-block;
+	width: 38%;
+	height: 92%;
+	text-align: left;
+	vertical-align: text-top;
+	padding-left: 10px;
+}
+
+div.spacer {
+	width: 120px;
+	height: 60px;
+	display: inline-block;
+}
+
+div.activityLabel { /* Picture images */
+	border: 0px;
+	background: transparent url("../img/layout/activity_label.png") no-repeat center top;
+	width: 250px;
+	height: 180px;
+	display: inline-block;
+	-webkit-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	-moz-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	box-shadow: 5x 5px 2px rgba(0, 0, 0, 0.15);
+  	transition:all 0.3s ease;
+  	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+	filter: gray; /* IE 6 -9 */
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+div.activityTrivia { /* Picture images */
+	border: 0px;
+	background: transparent url("../img/layout/activity_trivia.png") no-repeat center top;
+	width: 250px;
+	height: 180px;
+	display: inline-block;
+	-webkit-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	-moz-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	box-shadow: 5x 5px 2px rgba(0, 0, 0, 0.15);
+  	transition:all 0.3s ease;
+  	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+	filter: gray; /* IE 6 -9 */
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+div.activityWebquest { /* Picture images */
+	border: 0px;
+	background: transparent url("../img/layout/activity_webquest.png") no-repeat center top;
+	width: 250px;
+	height: 180px;
+	display: inline-block;
+	-webkit-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	-moz-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	box-shadow: 5x 5px 2px rgba(0, 0, 0, 0.15);
+  	transition:all 0.3s ease;
+  	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+	filter: gray; /* IE 6 -9 */
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+div.activityLabel:hover {
+	border: 0px;
+	background: transparent url("../img/layout/activity_label.png") no-repeat center top;
+	width: 250px;
+	height: 180px;
+	display: inline-block;
+	-webkit-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	-moz-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	box-shadow: 5x 5px 2px rgba(0, 0, 0, 0.15); 	
+  	-webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    background-size: cover;
+	background-position: 50% 50%;
+	filter: grayscale(0%);
+	-webkit-filter: grayscale(0%);
+	filter: none;
+}
+
+div.activityTrivia:hover {
+	border: 0px;
+	background: transparent url("../img/layout/activity_trivia.png") no-repeat center top;
+	width: 250px;
+	height: 180px;
+	display: inline-block;
+	-webkit-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	-moz-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	box-shadow: 5x 5px 2px rgba(0, 0, 0, 0.15); 	
+  	-webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    background-size: cover;
+	background-position: 50% 50%;
+	filter: grayscale(0%);
+	-webkit-filter: grayscale(0%);
+	filter: none;
+}
+
+div.activityWebquest:hover {
+	border: 0px;
+	background: transparent url("../img/layout/activity_webquest.png") no-repeat center top;
+	width: 250px;
+	height: 180px;
+	display: inline-block;
+	-webkit-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	-moz-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15);
+  	box-shadow: 5x 5px 2px rgba(0, 0, 0, 0.15); 	
+  	-webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    background-size: cover;
+	background-position: 50% 50%;
+	filter: grayscale(0%);
+	-webkit-filter: grayscale(0%);
+	filter: none;
+}
+
+div.activityerrormsg {
+	color: #FF0000;
+}
+
+select.length {
+	width: 240px;
+}
+
+/****************** webquest.php ******************/
+
+div.activitiesmaintable {
+	display: inline-block;
+	width: 910px;
+	text-align: left;
+	padding: 0px;
+	padding-top: 40px;
+	vertical-align: top;
+}
+
+div.activitiesleftcell {
+	display: inline-block;
+	width: 38%;
+	height: 100%;
+	text-align: left;
+	vertical-align: top;
+}
+
+div.activitiesrightcell {
+	display: inline-block;
+	width: 60%;
+	height: 100%;
+	text-align: left;
+	vertical-align: text-top;
+	padding-left: 10px;
+	overflow: hidden;
+	margin: 0;
+}
+
+div.titleblock {
+	display: inline-block;
+	width: 100%;
+	height: 70px;
+	padding-left: 5px;
+}
+
+div.userinputfields {
+	display: inline-block;
+	width: 100%;
+}
+
+p.nospace {
+	margin: 0;
+	font-weight: bold;
+}
+
+div#uploadPreview {
+	width: 150px;
+	height: 100px;
+	border: 1pt solid black;
+	display: block;
+}
+
+div > .thumb-image {
+    float: left;
+    max-width: 140px;
+    position: relative;
+    padding: 2px;
+    max-height: 90px;
+}
+
+.activityerror {
+	margin: 0;
+	color: #FF0000;
+}
+
+/****************** webquestactivity.php, triviaactivity.php ******************/
+
+div.webquestactivitiesmaintable, div.triviaactivitiesmaintable {
+	display: inline-block;
+	width: 910px;
+	text-align: left;
+	padding: 0px;
+	padding-top: 40px;
+	vertical-align: top;
+	margin-left: 10px;
+}
+
+.activityLeftTextFormat {
+	display: inline-block;
+	width: 49%;
+	text-align: left;
+	vertical-align: top;
+	height: 50px;
+}
+
+.activityRightCopying {
+	display: inline-block;
+	width: 50%;
+	text-align: right;
+	vertical-align: top;
+	height: 50px;
+}
+
+.iframePresentation {
+	display: inline-block;
+	outline: none;
+	width: 908px;
+	height: 660px;
+	overflow: hidden;
+	z-index: 10;
+	border: 0px;
+}
+
+.iframePresentation2 {
+	display: inline-block;
+	outline: none;
+	width: 908px;
+	height: 800px;
+	overflow: hidden;
+	z-index: 10;
+	border: 0px;
+}
+
+/******************* trivia.php ********************/
+
+div.spacertabs {
+    width: 250px;
+	height: 60px;
+	display: inline-block;
+}
+
+div#questionlist {
+	width: 440px;
+	height: 26px;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.1);
+	margin-top: 10px;
+	text-align: left;
+}
+
+span.minimum {
+	font-weight: normal;
+	font-style: italic;
+}
+
+span.smallbox1, #questionlist span {
+	width: 33px;
+	height: 26px;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+#questionlist span a {
+	font-size: 17pt;
+	color: #989898;
+	text-decoration: none;
+}
+
+#questionlist span.smallbox1 a, #questionlist span a:hover {
+	font-size: 17pt;
+	color: #000000;
+	text-decoration: none;
+}
+
+fieldset.input_step_wrap {
+	border: 0;
+	border-collapse: collapse;
+	float: left;
+	width: 546px;
+	margin: 0;
+	padding: 0;
+}
+
+#steps {
+	width: 546px;
+	overflow: hidden;
+}
+
+

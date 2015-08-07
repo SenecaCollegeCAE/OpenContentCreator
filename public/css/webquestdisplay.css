@@ -1,0 +1,223 @@
+/****************** webquestdisplay.php - IFRAME ******************/
+body {
+    text-align: center;
+    font-size: 10pt;
+    font-family: "Helvetica", sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background: transparent;
+    background-color: #FFFFFF;
+    color: #000000;
+    overflow-y: auto;
+}
+
+.webquestbackground {
+	display: inline-block;
+	width: 100%;
+	height: 645px;
+	overflow: hidden;
+	font-family: Trebuchet MS;
+}
+
+.webquesttopheadingbar {
+	width: 100%;
+	height: 50px;
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index: 30;
+	display: block;
+	margin-top: 0px;
+	padding: 0;
+}
+
+.webquesttopheadinglinkswrapper {
+	width: 90%; 
+	height: 50px; 
+	margin-left: 44px;
+}
+
+.boxlink {
+    width: 130px;
+    height: 35px;
+    z-index: 40;
+    display: inline-block;
+    float: middle;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding-top: 15px;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+a:link, a:visited, a:active {
+    color: #000000;
+}
+
+a:hover {
+    color: #FFFFFF;
+}
+
+a.license:hover {
+	color: #000000;
+}
+
+.webquestmainbox {
+	width: 80%;
+	height: 415px;
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index: 30;
+	display: block;
+	padding: 20px;
+	overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 70px;
+}
+
+.webquestlicense {
+	width: 100%;
+	height: 60px;
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index: 30;
+	display: block;
+	margin-top: 461px;
+	padding: 5px;
+}
+
+article {
+	font-style: italic;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-seamless
+}
+
+img {
+	max-width: 300px;
+	height: auto;
+	border: none;
+}
+
+hr {
+	border: 0;
+    height: 2px;
+    margin:18px 0;
+    position:relative;
+    background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 10%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0) 90%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(10%,rgba(0,0,0,0)), color-stop(50%,rgba(0,0,0,0.65)), color-stop(90%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 10%,rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 90%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 10%,rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 90%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 10%,rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 90%,rgba(0,0,0,0) 100%); /* IE10+ */
+    background: linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 10%,rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 90%,rgba(0,0,0,0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+div.activityspace {
+	display: block;
+	height: 5px;
+}
+
+h1.title, h2.title {
+	text-decoration: underline;
+}
+
+iframe {
+	outline: none;
+	overflow: none;
+	border: 0px;
+}
+
+.linkbackground {
+	width: 96%;
+	height: 25px;
+	display: block;
+	background-color: rgba(255, 255, 255, 0.4);
+	padding: 10px;
+}
+
+span.link {
+	width: 25px;
+	height: 20px;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle; 
+	padding-top: 5px;
+}
+
+span.link:hover {
+	width: 25px;
+	height: 20px;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle; 
+	padding-top: 5px;
+	color: #FFFFFF;
+}
+
+div.linksTasksQuestions {
+	width: 98%;
+	display: block; 
+	padding: 0;
+	margin: 0;
+}
+
+div.tasks {
+	display: inline-block;
+	width: 45%;
+	height: 180px;
+	background-color: rgba(255, 255, 255, 0.4);
+	float: left;
+	padding: 5px;
+	overflow-y: auto;
+}
+
+div.questions {
+	display: inline-block;
+	width: 45%;
+	height: 180px;
+	background-color: rgba(255, 255, 255, 0.4);
+	float: right;
+	padding: 5px;
+	overflow-y: auto;
+}
+
+span.links {
+	width: 50%;
+	height: 25px;
+	display: inline-block;
+	background-color: rgba(255, 255, 255, 0.4);
+	padding: 10px;
+	margin-top: -10px;
+}
+
+/********** angularjs animation ****************/
+
+main[ng-view] {
+	position: absolute;
+	width: 100%;
+	height: 405px;
+}
+
+.slider.ng-enter, .slider.ng-leave {
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+}
+
+.slider.ng-enter {
+	left: 100%;
+}
+
+.slider.ng-leave {
+	left: 0;
+}
+
+.slider.ng-enter-active {
+	left: 0;
+}
+
+.slider.ng-leave-active {
+	left: -100%;
+}
