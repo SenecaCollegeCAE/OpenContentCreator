@@ -13,6 +13,9 @@ app.factory("triviaQuestionFactory", function(){
 			questions.push(question);
 			question = [];
 			return;
+		},
+		getTotalQuestions:function() {
+			return questions.length;
 		}
 	};
 });
