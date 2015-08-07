@@ -18,5 +18,5 @@
 	?>
 	<p>Please click the button below to begin this Trivia activity.</p>
 	<br />
-	<button id="startTrivia" ng-click='startTrivia(<?php echo json_encode($randomized, JSON_HEX_APOS | JSON_HEX_QUOT); ?>)'>Start the Trivia Activity</button>
+	<button id="startTrivia" ng-click='getScoreType("<?php echo $activityObj[5]; ?>"); startTrivia(<?php echo json_encode($randomized, JSON_HEX_APOS | JSON_HEX_QUOT); ?>)'>Start the Trivia Activity</button>
 </div>

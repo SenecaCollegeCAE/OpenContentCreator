@@ -14,7 +14,8 @@
 		<script src="../../../../resources/library/angular-route.min.js"></script>
 		<script src="../../../../resources/library/angular-animate.min.js"></script>
 		<script src="../../../../public/js/triviajs/app.js"></script>
-		<script src="../../../../public/js/triviajs/services/triviafactory.js"></script>
+		<script src="../../../../public/js/triviajs/services/triviaquestionfactory.js"></script>
+		<script src="../../../../public/js/triviajs/services/triviarandomizefactory.js"></script>
 		<script src="../../../../public/js/triviajs/controllers/homeController.js"></script>
 		<script src="../../../../public/js/triviajs/controllers/triviaController.js"></script>
 		<script src="../../../../public/js/triviajs/controllers/triviaSecondController.js"></script>

@@ -21,9 +21,14 @@
 	
 	</div>
 	<!-- End of Lifelines -->
-	<br />
-	<div ng-show="!answerMode">
-		<span ng-show="correctAns">That is correct!</span>
-		<span ng-show="!correctAns">Sorry, that is an incorrect answer.</span>
+	<br /><br />
+	<div class="table">
+		<div class="score">
+			<span>Score: {{score}} {{scoreType}}</span>
+		</div>
+		<div class="feedback" ng-show="!answerMode">
+			<span ng-show="correctAns">That is correct!</span>
+			<span ng-show="!correctAns">Sorry, that is an incorrect answer.</span>
+		</div>
 	</div>
 </div>
