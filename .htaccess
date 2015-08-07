@@ -1,0 +1,9 @@
+RewriteEngine on
+# The directory that needs to be private and should not be shown
+# RewriteBase /OpenContentCreator/upload
+# RewriteBase /occ/upload
+# (.*\/)$ means the directory and everything else in it will be redirected to the htaccess_redirect.php file
+# RewriteRule ^(.*\/)$ /OpenContentCreator/htaccess_redirect.php
+#RewriteRule ^(.*\/)$ /occ/htaccess_redirect.php
+
+#AddType application/x-httpd-php5 .html .htm
