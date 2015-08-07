@@ -5,8 +5,10 @@
 <br />
 <div class="triviamainbox"><!--  trivia start -->
 	<div class="questionbox" ng-init="loadQuestion()">
-		<h2 class="questionnumber">Question Number: {{questionNumber}}</h2>
-		<h3>{{question}}</h3>
+		<h2 ng-show="!questionActive" class="questionnumberdone">Congratulations! You have completed the trivia activity.</h2>
+		<button id="startTrivia" ng-show="!questionActive" ng-click="playAgain()">Play Again</button>
+		<h2 ng-show="questionActive" class="questionnumber">Question Number: {{questionNumber}}</h2>
+		<h3 ng-show="questionActive">{{question}}</h3>
 	</div>
 	<!-- User choices -->
 	<ul>
@@ -17,14 +19,15 @@
 	</ul>
 	<!-- End of User choices -->
 	<!-- Lifelines -->
-	<div class="lifelines">
+	<div ng-show="questionActive" class="lifelines">
 	
 	</div>
 	<!-- End of Lifelines -->
 	<br /><br />
 	<div class="table">
 		<div class="score">
-			<span>Score: {{score}} {{scoreType}}</span>
+			<span ng-show="questionActive">Score: {{score}} {{scoreType}}</span>
+			<span ng-show="!questionActive">Your final score is: <br />{{score}} {{scoreType}}</span>
 		</div>
 		<div class="feedback" ng-show="!answerMode">
 			<span ng-show="correctAns">That is correct!</span>
