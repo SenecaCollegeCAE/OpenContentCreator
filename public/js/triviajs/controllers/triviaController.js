@@ -47,6 +47,13 @@ app.controller('triviaController', function($scope, $rootScope, $location, $time
 	};
 	
 	$scope.playAgain = function() {
+		$rootScope.questionNumber = 0;
+		
+		if($rootScope.scoreType == "dollars" || $rootScope.scoreType == "points")
+			$rootScope.score = 0;
+		else 
+			$rootScope.score = 1;
+		
 		$route.reload();
 	};
 });
