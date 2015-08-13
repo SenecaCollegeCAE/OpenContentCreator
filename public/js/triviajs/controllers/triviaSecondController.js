@@ -1,25 +1,43 @@
-app.controller('triviaSecondController', function($scope, $rootScope, $location, $timeout, $route, triviaQuestionFactory, triviaRandomizeFactory) {
+app.controller('triviaSecondController', function($scope, $rootScope, $location, $timeout, $route, $window, triviaQuestionFactory, triviaRandomizeFactory) {
 
 	$scope.animating = true;
 	$scope.questionActive = true;
 	
 	$scope.loadQuestion = function() {
 		if($rootScope.questionNumber < triviaQuestionFactory.getTotalQuestions()) {
-			var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber);
-			$rootScope.questionNumber++;
+			$rootScope.questionNumber++; 
+			
+			//get the question and set it & randomize the answers
+			var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber - 1);
+
 			console.log($rootScope.questionNumber);
-			$scope.clickDisabled = false;
-			
-			$scope.question = q.question;		
+			$scope.clickDisabled = false;			
+			$scope.question = q.question;	
 			$scope.correctAnswer = q.correctAnswer;
-	
-			var random = triviaRandomizeFactory.getAnswersAndRandomize(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, q.correctAnswer);
-			triviaRandomizeFactory.clearAndReset();
 			
+			var random = triviaRandomizeFactory.getAnswersAndRandomize(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, q.correctAnswer);
+			triviaRandomizeFactory.clearAndReset();	
 			$scope.options = random;
+			
+			//get the hint to a question if any
+			console.log(q.hint);
 		}
 		else {
 			$scope.questionActive = false;
+		}
+	};
+	
+	$scope.chooseLifeLine5050 = function() {
+		if($rootScope.lifeLine5050 > 0) {
+			var ca = triviaQuestionFactory.getCorrectAnswerToQuestion($rootScope.questionNumber - 1);
+			var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber - 1);
+			var origAnswers = $scope.options;
+			
+			//open a new window passing the possiblevalues to it
+			$window.possibleAnswers = triviaRandomizeFactory.getLifeline5050Values(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, ca, origAnswers);
+			$window.open("triviapopuplifeline5050.html", "triviaPopUpWindow", "width=400, height=200, left=100, top=100, directories=no, titlebar=no, toolbar=no, scrollbar=yes, resizable=no, menubar=no, status=no, location=no");
+			
+			$rootScope.lifeLine5050--;			
 		}
 	};
 	
@@ -48,6 +66,10 @@ app.controller('triviaSecondController', function($scope, $rootScope, $location,
 	
 	$scope.playAgain = function() {
 		$rootScope.questionNumber = 0;
+		var ll = triviaQuestionFactory.getLifeline();
+		$rootScope.lifeLine5050 = ll[0].lifeLine5050;
+		$rootScope.lifeLineHint = ll[1].lifeLineHint;
+		$rootScope.lifeLineAudience = ll[2].lifeLineAudience;
 		
 		if($rootScope.scoreType == "dollars" || $rootScope.scoreType == "points")
 			$rootScope.score = 0;

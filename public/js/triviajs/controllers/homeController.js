@@ -15,6 +15,21 @@ app.controller('homeController', function($scope, $rootScope, $location, triviaQ
 		$rootScope.scoreType = sType;
 	};
 	
+	$scope.getLifelines = function(lifeLine5050, lifeLineHint, lifeLineAudience) {
+		triviaQuestionFactory.setIntoALifeline("lifeLine5050", lifeLine5050);
+		triviaQuestionFactory.clearAndSetToLifelines();
+		triviaQuestionFactory.setIntoALifeline("lifeLineHint", lifeLineHint);
+		triviaQuestionFactory.clearAndSetToLifelines();
+		triviaQuestionFactory.setIntoALifeline("lifeLineAudience", lifeLineAudience);
+		triviaQuestionFactory.clearAndSetToLifelines();
+		
+		//get the lifelines
+		var ll = triviaQuestionFactory.getLifeline();
+		$rootScope.lifeLine5050 = ll[0].lifeLine5050;
+		$rootScope.lifeLineHint = ll[1].lifeLineHint;
+		$rootScope.lifeLineAudience = ll[2].lifeLineAudience;
+	};
+	
 	$scope.startTrivia = function(randomized, sType) {		
 		for(var i = 0; i < randomized.length; i++) {
 			triviaQuestionFactory.setIntoAQuestion("question", randomized[i][0]);

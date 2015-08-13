@@ -1,25 +1,43 @@
-app.controller('triviaController', function($scope, $rootScope, $location, $timeout, $route, triviaQuestionFactory, triviaRandomizeFactory) {
+app.controller('triviaController', function($scope, $rootScope, $location, $timeout, $route, $window, triviaQuestionFactory, triviaRandomizeFactory) {
 
 	$scope.animating = true;
 	$scope.questionActive = true;
 
 	$scope.loadQuestion = function() {
 		if($rootScope.questionNumber < triviaQuestionFactory.getTotalQuestions()) {
-			var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber);		
-			$rootScope.questionNumber++;
-			console.log($rootScope.questionNumber);
-			$scope.clickDisabled = false;
+			$rootScope.questionNumber++; 
 			
+			//get the question and set it & randomize the answers
+			var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber - 1);
+
+			console.log($rootScope.questionNumber);
+			$scope.clickDisabled = false;			
 			$scope.question = q.question;	
 			$scope.correctAnswer = q.correctAnswer;
 			
 			var random = triviaRandomizeFactory.getAnswersAndRandomize(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, q.correctAnswer);
-			triviaRandomizeFactory.clearAndReset();
-	
+			triviaRandomizeFactory.clearAndReset();	
 			$scope.options = random;
+			
+			//get the hint to a question if any
+			console.log(q.hint);
 		}
 		else
 			$scope.questionActive = false;
+	};
+	
+	$scope.chooseLifeLine5050 = function() {
+		if($rootScope.lifeLine5050 > 0) {
+			var ca = triviaQuestionFactory.getCorrectAnswerToQuestion($rootScope.questionNumber - 1);
+			var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber - 1);
+			var origAnswers = $scope.options;
+			
+			//open a new window passing the possiblevalues to it
+			$window.possibleAnswers = triviaRandomizeFactory.getLifeline5050Values(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, ca, origAnswers);
+			$window.open("triviapopuplifeline5050.html", "triviaPopUpWindow", "width=400, height=200, left=100, top=100, directories=no, titlebar=no, toolbar=no, scrollbar=yes, resizable=no, menubar=no, status=no, location=no");
+			
+			$rootScope.lifeLine5050--;			
+		}
 	};
 	
 	$scope.answerMode = true;
@@ -35,7 +53,7 @@ app.controller('triviaController', function($scope, $rootScope, $location, $time
 			else 
 				$rootScope.score += 1;
 			
-			$timeout(function() { $location.path('/triviaSecond'); }, 2000);
+			$timeout(function() { $location.path('/triviaSecond');  }, 2000);
 		}
 		else {
 			$scope.correctAns = false;
