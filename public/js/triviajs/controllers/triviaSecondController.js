@@ -35,9 +35,29 @@ app.controller('triviaSecondController', function($scope, $rootScope, $location,
 			
 			//open a new window passing the possiblevalues to it
 			$window.possibleAnswers = triviaRandomizeFactory.getLifeline5050Values(q.wrongAnswer1, q.wrongAnswer2, q.wrongAnswer3, ca, origAnswers);
-			$window.open("triviapopuplifeline5050.html", "triviaPopUpWindow", "width=400, height=200, left=100, top=100, directories=no, titlebar=no, toolbar=no, scrollbar=yes, resizable=no, menubar=no, status=no, location=no");
+			$window.open("triviapopuplifeline5050.php", "triviaPopUpWindow", "width=400, height=200, left=100, top=100, directories=no, titlebar=no, toolbar=no, scrollbar=yes, resizable=no, menubar=no, status=no, location=no");
 			
 			$rootScope.lifeLine5050--;			
+		}
+	};
+	
+	$scope.chooseLifeLineHint = function() {
+		if($rootScope.lifeLineHint > 0) {
+			var q = triviaQuestionFactory.getAQuestion($rootScope.questionNumber - 1);
+			
+			//get the hint to a question if any
+			$window.hint = q.hint;
+			$window.open("triviapopuplifelinehint.php", "triviaPopUpWindow", "width=400, height=200, left=100, top=100, directories=no, titlebar=no, toolbar=no, scrollbar=yes, resizable=no, menubar=no, status=no, location=no");
+			
+			$rootScope.lifeLineHint--;
+		}
+	};
+	
+	$scope.chooseLifeLineAudience = function() {
+		if($rootScope.lifeLineAudience > 0) {
+			
+			$window.open("triviapopuplifelineaudience.php", "triviaPopUpWindow", "width=430, height=580, left=100, top=100, directories=no, titlebar=no, toolbar=no, scrollbar=yes, resizable=no, menubar=no, status=no, location=no");
+			$rootScope.lifeLineAudience--;
 		}
 	};
 	
