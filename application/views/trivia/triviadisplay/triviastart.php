@@ -6,7 +6,7 @@
 <div class="triviamainbox"><!--  trivia start -->
 	<div class="questionbox" ng-init="loadQuestion()">
 		<h2 ng-show="!questionActive" class="questionnumberdone">Congratulations! You have completed the trivia activity.</h2>
-		<button ng-show="!questionActive" id="startTrivia" ng-click="playAgain()">Play Again</button>
+		<button ng-show="!questionActive" id="startTrivia" ng-click="playAgain()">Play Again?</button>
 		<h2 ng-show="questionActive" class="questionnumber">Question Number: {{questionNumber}}</h2>
 		<h3 ng-show="questionActive">{{question}}</h3>
 	</div>
