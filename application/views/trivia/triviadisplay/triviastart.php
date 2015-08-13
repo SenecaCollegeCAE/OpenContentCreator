@@ -20,11 +20,11 @@
 	<!-- End of User choices -->
 	<!-- Lifelines -->
 	<div ng-show="questionActive" class="lifelines">
-		<img src="../../../../public/img/layout/lifeline5050.png" width="40" height="40" alt="lifeline5050" ng-click="chooseLifeLine5050()" class="iconClick"/><span class="lifelinefont"> x {{lifeLine5050}}</span>
+		<img src="../../../../public/img/layout/lifeline5050.png" width="40" height="40" alt="lifeline5050" title="Lifeline 50/50" ng-click="chooseLifeLine5050()" class="iconClick"/><span class="lifelinefont"> x {{lifeLine5050}}</span>
 		<div class="lifelinespacer"></div>
-		<img src="../../../../public/img/layout/lifelineHint.png" width="40" height="40" alt="lifelineHint" ng-click="" class="iconClick"/><span class="lifelinefont"> x {{lifeLineHint}}</span>
+		<img src="../../../../public/img/layout/lifelineHint.png" width="40" height="40" alt="lifelineHint" title="Lifeline Hint" ng-click="chooseLifeLineHint()" class="iconClick"/><span class="lifelinefont"> x {{lifeLineHint}}</span>
 		<div class="lifelinespacer"></div>
-		<img src="../../../../public/img/layout/lifelineAudience.png" width="40" height="40" alt="lifelineAudience" ng-click="" class="iconClick"/><span class="lifelinefont"> x {{lifeLineAudience}}</span>
+		<img src="../../../../public/img/layout/lifelineAudience.png" width="40" height="40" alt="lifelineAudience" title="Lifeline Audience" ng-click="chooseLifeLineAudience()" class="iconClick"/><span class="lifelinefont"> x {{lifeLineAudience}}</span>
 	</div>
 	<!-- End of Lifelines -->
 	<br /><br /><br />
