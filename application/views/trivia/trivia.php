@@ -304,148 +304,148 @@
 									<option value="hard" <?php if(isset($difficulties) && $difficulties[4] == "hard") { echo "selected"; } ?>>Hard</option>
 								</select>
 									<br /><br />
-								<input type="text" name="triviaQuestion[]" value="<?php if(isset($questions)) { if($questions[4] != "") { echo $questions[4]; } }?>" size="58" placeholder="Question you want to ask" />
+								<input type="text" name="triviaQuestion[]" id="triviaQuestion5" value="<?php if(isset($questions)) { if($questions[4] != "") { echo $questions[4]; } }?>" size="58" placeholder="Question you want to ask" />
 									<br /><br />
-								<input type="text" name="triviaCorrectAnswer[]" value="<?php if(isset($correctAnswers)) { if($correctAnswers[4] != "") { echo $correctAnswers[4]; } }?>" size="58" placeholder="Correct answer for the question" />
+								<input type="text" name="triviaCorrectAnswer[]" id="triviaCorrectAnswer5" value="<?php if(isset($correctAnswers)) { if($correctAnswers[4] != "") { echo $correctAnswers[4]; } }?>" size="58" placeholder="Correct answer for the question" />
 									<br /><br />
-								<input type="text" name="triviaWrongAnswer1[]" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[4] != "") { echo $wrongAnswers1[4]; } }?>" size="14" placeholder="Wrong answer #1" />&nbsp;
-								<input type="text" name="triviaWrongAnswer2[]" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[4] != "") { echo $wrongAnswers2[4]; } }?>" size="14" placeholder="Wrong answer #2" />&nbsp;
-								<input type="text" name="triviaWrongAnswer3[]" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[4] != "") { echo $wrongAnswers3[4]; } }?>" size="14" placeholder="Wrong answer #3" />
+								<input type="text" name="triviaWrongAnswer1[]" id="triviaWrongAnswer1_5" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[4] != "") { echo $wrongAnswers1[4]; } }?>" size="14" placeholder="Wrong answer #1" />&nbsp;
+								<input type="text" name="triviaWrongAnswer2[]" id="triviaWrongAnswer2_5" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[4] != "") { echo $wrongAnswers2[4]; } }?>" size="14" placeholder="Wrong answer #2" />&nbsp;
+								<input type="text" name="triviaWrongAnswer3[]" id="triviaWrongAnswer3_5" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[4] != "") { echo $wrongAnswers3[4]; } }?>" size="14" placeholder="Wrong answer #3" />
 									<br /><br />
 								<input type="text" name="triviaHint[]" value="<?php if(isset($hints)) { if($hints[4] != "") { echo $hints[4]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" />		
 							</div>
 						</fieldset>
 						<fieldset class="input_step_wrap" id="fieldset6">
 							<div>
-								<select name="triviaDifficulty[]">
+								<select name="triviaDifficulty[]" id="triviaDifficulty6" disabled>
 									<option value="easy" <?php if(isset($difficulties) && $difficulties[5] == "easy") { echo "selected"; } ?>>Easy</option>
 									<option value="medium" <?php if(isset($difficulties) && $difficulties[5] == "medium") { echo "selected"; } ?>>Medium</option>
 									<option value="hard" <?php if(isset($difficulties) && $difficulties[5] == "hard") { echo "selected"; } ?>>Hard</option>
 								</select>
 									<br /><br />
-								<input type="text" name="triviaQuestion[]" value="<?php if(isset($questions)) { if($questions[5] != "") { echo $questions[5]; } }?>" size="58" placeholder="Question you want to ask" />
+								<input type="text" name="triviaQuestion[]" id="triviaQuestion6" value="<?php if(isset($questions)) { if($questions[5] != "") { echo $questions[5]; } }?>" size="58" placeholder="Question you want to ask" disabled/>
 									<br /><br />
-								<input type="text" name="triviaCorrectAnswer[]" value="<?php if(isset($correctAnswers)) { if($correctAnswers[5] != "") { echo $correctAnswers[5]; } }?>" size="58" placeholder="Correct answer for the question" />
+								<input type="text" name="triviaCorrectAnswer[]" id="triviaCorrectAnswer6" value="<?php if(isset($correctAnswers)) { if($correctAnswers[5] != "") { echo $correctAnswers[5]; } }?>" size="58" placeholder="Correct answer for the question" disabled/>
 									<br /><br />
-								<input type="text" name="triviaWrongAnswer1[]" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[5] != "") { echo $wrongAnswers1[5]; } }?>" size="14" placeholder="Wrong answer #1" />&nbsp;
-								<input type="text" name="triviaWrongAnswer2[]" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[5] != "") { echo $wrongAnswers2[5]; } }?>" size="14" placeholder="Wrong answer #2" />&nbsp;
-								<input type="text" name="triviaWrongAnswer3[]" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[5] != "") { echo $wrongAnswers3[5]; } }?>" size="14" placeholder="Wrong answer #3" />
+								<input type="text" name="triviaWrongAnswer1[]" id="triviaWrongAnswer1_6" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[5] != "") { echo $wrongAnswers1[5]; } }?>" size="14" placeholder="Wrong answer #1" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer2[]" id="triviaWrongAnswer2_6" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[5] != "") { echo $wrongAnswers2[5]; } }?>" size="14" placeholder="Wrong answer #2" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer3[]" id="triviaWrongAnswer3_6" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[5] != "") { echo $wrongAnswers3[5]; } }?>" size="14" placeholder="Wrong answer #3" disabled/>
 									<br /><br />
-								<input type="text" name="triviaHint[]" value="<?php if(isset($hints)) { if($hints[5] != "") { echo $hints[5]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" />		
+								<input type="text" name="triviaHint[]" id="triviaHint6" value="<?php if(isset($hints)) { if($hints[5] != "") { echo $hints[5]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" disabled/>		
 							</div>
 						</fieldset>
 						<fieldset class="input_step_wrap" id="fieldset7">
 							<div>
-								<select name="triviaDifficulty[]">
+								<select name="triviaDifficulty[]" id="triviaDifficulty7" disabled>
 									<option value="easy" <?php if(isset($difficulties) && $difficulties[6] == "easy") { echo "selected"; } ?>>Easy</option>
 									<option value="medium" <?php if(isset($difficulties) && $difficulties[6] == "medium") { echo "selected"; } ?>>Medium</option>
 									<option value="hard" <?php if(isset($difficulties) && $difficulties[6] == "hard") { echo "selected"; } ?>>Hard</option>
 								</select>
 									<br /><br />
-								<input type="text" name="triviaQuestion[]" value="<?php if(isset($questions)) { if($questions[6] != "") { echo $questions[6]; } }?>" size="58" placeholder="Question you want to ask" />
+								<input type="text" name="triviaQuestion[]" id="triviaQuestion7" value="<?php if(isset($questions)) { if($questions[6] != "") { echo $questions[6]; } }?>" size="58" placeholder="Question you want to ask" disabled/>
 									<br /><br />
-								<input type="text" name="triviaCorrectAnswer[]" value="<?php if(isset($correctAnswers)) { if($correctAnswers[6] != "") { echo $correctAnswers[6]; } }?>" size="58" placeholder="Correct answer for the question" />
+								<input type="text" name="triviaCorrectAnswer[]" id="triviaCorrectAnswer7" value="<?php if(isset($correctAnswers)) { if($correctAnswers[6] != "") { echo $correctAnswers[6]; } }?>" size="58" placeholder="Correct answer for the question" disabled/>
 									<br /><br />
-								<input type="text" name="triviaWrongAnswer1[]" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[6] != "") { echo $wrongAnswers1[6]; } }?>" size="14" placeholder="Wrong answer #1" />&nbsp;
-								<input type="text" name="triviaWrongAnswer2[]" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[6] != "") { echo $wrongAnswers2[6]; } }?>" size="14" placeholder="Wrong answer #2" />&nbsp;
-								<input type="text" name="triviaWrongAnswer3[]" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[6] != "") { echo $wrongAnswers3[6]; } }?>" size="14" placeholder="Wrong answer #3" />
+								<input type="text" name="triviaWrongAnswer1[]" id="triviaWrongAnswer1_7" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[6] != "") { echo $wrongAnswers1[6]; } }?>" size="14" placeholder="Wrong answer #1" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer2[]" id="triviaWrongAnswer2_7" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[6] != "") { echo $wrongAnswers2[6]; } }?>" size="14" placeholder="Wrong answer #2" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer3[]" id="triviaWrongAnswer3_7" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[6] != "") { echo $wrongAnswers3[6]; } }?>" size="14" placeholder="Wrong answer #3" disabled/>
 									<br /><br />
-								<input type="text" name="triviaHint[]" value="<?php if(isset($hints)) { if($hints[6] != "") { echo $hints[6]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" />		
+								<input type="text" name="triviaHint[]" id="triviaHint7" value="<?php if(isset($hints)) { if($hints[6] != "") { echo $hints[6]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" disabled/>		
 							</div>
 						</fieldset>
 						<fieldset class="input_step_wrap" id="fieldset8">
 							<div>
-								<select name="triviaDifficulty[]">
+								<select name="triviaDifficulty[]" id="triviaDifficulty8" disabled>
 									<option value="easy" <?php if(isset($difficulties) && $difficulties[7] == "easy") { echo "selected"; } ?>>Easy</option>
 									<option value="medium" <?php if(isset($difficulties) && $difficulties[7] == "medium") { echo "selected"; } ?>>Medium</option>
 									<option value="hard" <?php if(isset($difficulties) && $difficulties[7] == "hard") { echo "selected"; } ?>>Hard</option>
 								</select>
 									<br /><br />
-								<input type="text" name="triviaQuestion[]" value="<?php if(isset($questions)) { if($questions[7] != "") { echo $questions[7]; } }?>" size="58" placeholder="Question you want to ask" />
+								<input type="text" name="triviaQuestion[]" id="triviaQuestion8" value="<?php if(isset($questions)) { if($questions[7] != "") { echo $questions[7]; } }?>" size="58" placeholder="Question you want to ask" disabled/>
 									<br /><br />
-								<input type="text" name="triviaCorrectAnswer[]" value="<?php if(isset($correctAnswers)) { if($correctAnswers[7] != "") { echo $correctAnswers[7]; } }?>" size="58" placeholder="Correct answer for the question" />
+								<input type="text" name="triviaCorrectAnswer[]" id="triviaCorrectAnswer8" value="<?php if(isset($correctAnswers)) { if($correctAnswers[7] != "") { echo $correctAnswers[7]; } }?>" size="58" placeholder="Correct answer for the question" disabled/>
 									<br /><br />
-								<input type="text" name="triviaWrongAnswer1[]" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[7] != "") { echo $wrongAnswers1[7]; } }?>" size="14" placeholder="Wrong answer #1" />&nbsp;
-								<input type="text" name="triviaWrongAnswer2[]" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[7] != "") { echo $wrongAnswers2[7]; } }?>" size="14" placeholder="Wrong answer #2" />&nbsp;
-								<input type="text" name="triviaWrongAnswer3[]" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[7] != "") { echo $wrongAnswers3[7]; } }?>" size="14" placeholder="Wrong answer #3" />
+								<input type="text" name="triviaWrongAnswer1[]" id="triviaWrongAnswer1_8" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[7] != "") { echo $wrongAnswers1[7]; } }?>" size="14" placeholder="Wrong answer #1" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer2[]" id="triviaWrongAnswer2_8" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[7] != "") { echo $wrongAnswers2[7]; } }?>" size="14" placeholder="Wrong answer #2" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer3[]" id="triviaWrongAnswer3_8" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[7] != "") { echo $wrongAnswers3[7]; } }?>" size="14" placeholder="Wrong answer #3" disabled/>
 									<br /><br />
-								<input type="text" name="triviaHint[]" value="<?php if(isset($hints)) { if($hints[7] != "") { echo $hints[7]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" />		
+								<input type="text" name="triviaHint[]" id="triviaHint8" value="<?php if(isset($hints)) { if($hints[7] != "") { echo $hints[7]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" disabled/>		
 							</div>
 						</fieldset>
 						<fieldset class="input_step_wrap" id="fieldset9">
 							<div>
-								<select name="triviaDifficulty[]">
+								<select name="triviaDifficulty[]" id="triviaDifficulty9" disabled>
 									<option value="easy" <?php if(isset($difficulties) && $difficulties[8] == "easy") { echo "selected"; } ?>>Easy</option>
 									<option value="medium" <?php if(isset($difficulties) && $difficulties[8] == "medium") { echo "selected"; } ?>>Medium</option>
 									<option value="hard" <?php if(isset($difficulties) && $difficulties[8] == "hard") { echo "selected"; } ?>>Hard</option>
 								</select>
 									<br /><br />
-								<input type="text" name="triviaQuestion[]" value="<?php if(isset($questions)) { if($questions[8] != "") { echo $questions[8]; } }?>" size="58" placeholder="Question you want to ask" />
+								<input type="text" name="triviaQuestion[]" id="triviaQuestion9" value="<?php if(isset($questions)) { if($questions[8] != "") { echo $questions[8]; } }?>" size="58" placeholder="Question you want to ask" disabled/>
 									<br /><br />
-								<input type="text" name="triviaCorrectAnswer[]" value="<?php if(isset($correctAnswers)) { if($correctAnswers[8] != "") { echo $correctAnswers[8]; } }?>" size="58" placeholder="Correct answer for the question" />
+								<input type="text" name="triviaCorrectAnswer[]" id="triviaCorrectAnswer9" value="<?php if(isset($correctAnswers)) { if($correctAnswers[8] != "") { echo $correctAnswers[8]; } }?>" size="58" placeholder="Correct answer for the question" disabled/>
 									<br /><br />
-								<input type="text" name="triviaWrongAnswer1[]" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[8] != "") { echo $wrongAnswers1[8]; } }?>" size="14" placeholder="Wrong answer #1" />&nbsp;
-								<input type="text" name="triviaWrongAnswer2[]" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[8] != "") { echo $wrongAnswers2[8]; } }?>" size="14" placeholder="Wrong answer #2" />&nbsp;
-								<input type="text" name="triviaWrongAnswer3[]" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[8] != "") { echo $wrongAnswers3[8]; } }?>" size="14" placeholder="Wrong answer #3" />
+								<input type="text" name="triviaWrongAnswer1[]" id="triviaWrongAnswer1_9" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[8] != "") { echo $wrongAnswers1[8]; } }?>" size="14" placeholder="Wrong answer #1" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer2[]" id="triviaWrongAnswer2_9" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[8] != "") { echo $wrongAnswers2[8]; } }?>" size="14" placeholder="Wrong answer #2" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer3[]" id="triviaWrongAnswer3_9" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[8] != "") { echo $wrongAnswers3[8]; } }?>" size="14" placeholder="Wrong answer #3" disabled/>
 									<br /><br />
-								<input type="text" name="triviaHint[]" value="<?php if(isset($hints)) { if($hints[8] != "") { echo $hints[8]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" />		
+								<input type="text" name="triviaHint[]" id="triviaHint9" value="<?php if(isset($hints)) { if($hints[8] != "") { echo $hints[8]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" disabled/>		
 							</div>
 						</fieldset>
 						<fieldset class="input_step_wrap" id="fieldset10">
 							<div>
-								<select name="triviaDifficulty[]">
+								<select name="triviaDifficulty[]" id="triviaDifficulty10" disabled>
 									<option value="easy" <?php if(isset($difficulties) && $difficulties[9] == "easy") { echo "selected"; } ?>>Easy</option>
 									<option value="medium" <?php if(isset($difficulties) && $difficulties[9] == "medium") { echo "selected"; } ?>>Medium</option>
 									<option value="hard" <?php if(isset($difficulties) && $difficulties[9] == "hard") { echo "selected"; } ?>>Hard</option>
 								</select>
 									<br /><br />
-								<input type="text" name="triviaQuestion[]" value="<?php if(isset($questions)) { if($questions[9] != "") { echo $questions[9]; } }?>" size="58" placeholder="Question you want to ask" />
+								<input type="text" name="triviaQuestion[]" id="triviaQuestion10" value="<?php if(isset($questions)) { if($questions[9] != "") { echo $questions[9]; } }?>" size="58" placeholder="Question you want to ask" disabled/>
 									<br /><br />
-								<input type="text" name="triviaCorrectAnswer[]" value="<?php if(isset($correctAnswers)) { if($correctAnswers[9] != "") { echo $correctAnswers[9]; } }?>" size="58" placeholder="Correct answer for the question" />
+								<input type="text" name="triviaCorrectAnswer[]" id="triviaCorrectAnswer10" value="<?php if(isset($correctAnswers)) { if($correctAnswers[9] != "") { echo $correctAnswers[9]; } }?>" size="58" placeholder="Correct answer for the question" disabled/>
 									<br /><br />
-								<input type="text" name="triviaWrongAnswer1[]" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[9] != "") { echo $wrongAnswers1[9]; } }?>" size="14" placeholder="Wrong answer #1" />&nbsp;
-								<input type="text" name="triviaWrongAnswer2[]" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[9] != "") { echo $wrongAnswers2[9]; } }?>" size="14" placeholder="Wrong answer #2" />&nbsp;
-								<input type="text" name="triviaWrongAnswer3[]" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[9] != "") { echo $wrongAnswers3[9]; } }?>" size="14" placeholder="Wrong answer #3" />
+								<input type="text" name="triviaWrongAnswer1[]" id="triviaWrongAnswer1_10" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[9] != "") { echo $wrongAnswers1[9]; } }?>" size="14" placeholder="Wrong answer #1" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer2[]" id="triviaWrongAnswer2_10" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[9] != "") { echo $wrongAnswers2[9]; } }?>" size="14" placeholder="Wrong answer #2" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer3[]" id="triviaWrongAnswer3_10" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[9] != "") { echo $wrongAnswers3[9]; } }?>" size="14" placeholder="Wrong answer #3" disabled/>
 									<br /><br />
-								<input type="text" name="triviaHint[]" value="<?php if(isset($hints)) { if($hints[9] != "") { echo $hints[9]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" />		
+								<input type="text" name="triviaHint[]" id="triviaHint10" value="<?php if(isset($hints)) { if($hints[9] != "") { echo $hints[9]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" disabled/>		
 							</div>
 						</fieldset>
 						<fieldset class="input_step_wrap" id="fieldset11">
 							<div>
-								<select name="triviaDifficulty[]">
+								<select name="triviaDifficulty[]" id="triviaDifficulty11" disabled>
 									<option value="easy" <?php if(isset($difficulties) && $difficulties[10] == "easy") { echo "selected"; } ?>>Easy</option>
 									<option value="medium" <?php if(isset($difficulties) && $difficulties[10] == "medium") { echo "selected"; } ?>>Medium</option>
 									<option value="hard" <?php if(isset($difficulties) && $difficulties[10] == "hard") { echo "selected"; } ?>>Hard</option>
 								</select>
 									<br /><br />
-								<input type="text" name="triviaQuestion[]" value="<?php if(isset($questions)) { if($questions[10] != "") { echo $questions[10]; } }?>" size="58" placeholder="Question you want to ask" />
+								<input type="text" name="triviaQuestion[]" id="triviaQuestion11" value="<?php if(isset($questions)) { if($questions[10] != "") { echo $questions[10]; } }?>" size="58" placeholder="Question you want to ask" disabled/>
 									<br /><br />
-								<input type="text" name="triviaCorrectAnswer[]" value="<?php if(isset($correctAnswers)) { if($correctAnswers[10] != "") { echo $correctAnswers[10]; } }?>" size="58" placeholder="Correct answer for the question" />
+								<input type="text" name="triviaCorrectAnswer[]" id="triviaCorrectAnswer11" value="<?php if(isset($correctAnswers)) { if($correctAnswers[10] != "") { echo $correctAnswers[10]; } }?>" size="58" placeholder="Correct answer for the question" disabled/>
 									<br /><br />
-								<input type="text" name="triviaWrongAnswer1[]" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[10] != "") { echo $wrongAnswers1[10]; } }?>" size="14" placeholder="Wrong answer #1" />&nbsp;
-								<input type="text" name="triviaWrongAnswer2[]" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[10] != "") { echo $wrongAnswers2[10]; } }?>" size="14" placeholder="Wrong answer #2" />&nbsp;
-								<input type="text" name="triviaWrongAnswer3[]" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[10] != "") { echo $wrongAnswers3[10]; } }?>" size="14" placeholder="Wrong answer #3" />
+								<input type="text" name="triviaWrongAnswer1[]" id="triviaWrongAnswer1_11" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[10] != "") { echo $wrongAnswers1[10]; } }?>" size="14" placeholder="Wrong answer #1" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer2[]" id="triviaWrongAnswer2_11" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[10] != "") { echo $wrongAnswers2[10]; } }?>" size="14" placeholder="Wrong answer #2" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer3[]" id="triviaWrongAnswer3_11" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[10] != "") { echo $wrongAnswers3[10]; } }?>" size="14" placeholder="Wrong answer #3" disabled/>
 									<br /><br />
-								<input type="text" name="triviaHint[]" value="<?php if(isset($hints)) { if($hints[10] != "") { echo $hints[10]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" />		
+								<input type="text" name="triviaHint[]" id="triviaHint11" value="<?php if(isset($hints)) { if($hints[10] != "") { echo $hints[10]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" disabled/>		
 							</div>
 						</fieldset>
 						<fieldset class="input_step_wrap" id="fieldset12">
 							<div>
-								<select name="triviaDifficulty[]">
+								<select name="triviaDifficulty[]" id="triviaDifficulty12" disabled>
 									<option value="easy" <?php if(isset($difficulties) && $difficulties[11] == "easy") { echo "selected"; } ?>>Easy</option>
 									<option value="medium" <?php if(isset($difficulties) && $difficulties[11] == "medium") { echo "selected"; } ?>>Medium</option>
 									<option value="hard" <?php if(isset($difficulties) && $difficulties[11] == "hard") { echo "selected"; } ?>>Hard</option>
 								</select>
 									<br /><br />
-								<input type="text" name="triviaQuestion[]" value="<?php if(isset($questions)) { if($questions[11] != "") { echo $questions[11]; } }?>" size="58" placeholder="Question you want to ask" />
+								<input type="text" name="triviaQuestion[]" id="triviaQuestion12" value="<?php if(isset($questions)) { if($questions[11] != "") { echo $questions[11]; } }?>" size="58" placeholder="Question you want to ask" disabled/>
 									<br /><br />
-								<input type="text" name="triviaCorrectAnswer[]" value="<?php if(isset($correctAnswers)) { if($correctAnswers[11] != "") { echo $correctAnswers[11]; } }?>" size="58" placeholder="Correct answer for the question" />
+								<input type="text" name="triviaCorrectAnswer[]" id="triviaCorrectAnswer12" value="<?php if(isset($correctAnswers)) { if($correctAnswers[11] != "") { echo $correctAnswers[11]; } }?>" size="58" placeholder="Correct answer for the question" disabled/>
 									<br /><br />
-								<input type="text" name="triviaWrongAnswer1[]" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[11] != "") { echo $wrongAnswers1[11]; } }?>" size="14" placeholder="Wrong answer #1" />&nbsp;
-								<input type="text" name="triviaWrongAnswer2[]" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[11] != "") { echo $wrongAnswers2[11]; } }?>" size="14" placeholder="Wrong answer #2" />&nbsp;
-								<input type="text" name="triviaWrongAnswer3[]" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[11] != "") { echo $wrongAnswers3[11]; } }?>" size="14" placeholder="Wrong answer #3" />
+								<input type="text" name="triviaWrongAnswer1[]" id="triviaWrongAnswer1_12" value="<?php if(isset($wrongAnswers1)) { if($wrongAnswers1[11] != "") { echo $wrongAnswers1[11]; } }?>" size="14" placeholder="Wrong answer #1" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer2[]" id="triviaWrongAnswer2_12" value="<?php if(isset($wrongAnswers2)) { if($wrongAnswers2[11] != "") { echo $wrongAnswers2[11]; } }?>" size="14" placeholder="Wrong answer #2" disabled/>&nbsp;
+								<input type="text" name="triviaWrongAnswer3[]" id="triviaWrongAnswer3_12" value="<?php if(isset($wrongAnswers3)) { if($wrongAnswers3[11] != "") { echo $wrongAnswers3[11]; } }?>" size="14" placeholder="Wrong answer #3" disabled/>
 									<br /><br />
-								<input type="text" name="triviaHint[]" value="<?php if(isset($hints)) { if($hints[11] != "") { echo $hints[11]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" />		
+								<input type="text" name="triviaHint[]" id="triviaHint12" value="<?php if(isset($hints)) { if($hints[11] != "") { echo $hints[11]; } }?>" size="58" placeholder="Hint for the question (Used as a lifeline. OPTIONAL)" disabled/>		
 							</div>
 						</fieldset>
 					</div>
