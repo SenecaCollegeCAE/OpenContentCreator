@@ -1,0 +1,129 @@
+<?php 
+	require_once("../../controllers/helpers/storedUserInfo.php");
+	require_once("../../controllers/helpers/storedActivityInfo.php");
+	require_once("../../controllers/labelActivityController_Validation.php");
+	require_once("../../../resources/templates/header.php");
+	docheaderWithJqueryLibraries("Open Content Creator - Label Activity", "../../../public/css/style.css", "../../../public/img/myicon.ico", array("../../../resources/library/jquery.leanModal.min.js", "../../../public/js/modaltrigger.js", "../../../resources/library/tinymce/tinymce.min.js", "../../../resources/library/tinymce/tinymceConfiguration.js", "../../../public/js/dynamiclabelelements.js", "../../../public/js/topscroller.js"));
+?>
+	</head>
+	<body>
+	<?php
+		//Top Navigation bar 
+		require_once("../../../resources/templates/navigation.php");
+		navigationBody($userInfoArray[1], "../activityMain/");
+		require_once("../../../resources/templates/changepassword.php");
+		changePassword($userInfoArray[0], $userInfoArray[1], $userInfoArray[3]);
+		require_once("../../../resources/templates/help.php");
+		helpMenu();
+		//End of Top Navigation bar
+	?>
+	<form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multi/form-data">
+		<input type="hidden" value="<?php if(isset($_POST['activityNumber'])) { echo $_POST['activityNumber']; } ?>" name="activityNumber" id="activityNumber" />
+		<div class="activitiesmaintable">
+			<div class="titleblock">
+				<h2>Label Activity</h2>
+				<?php 
+					if(isset($_GET['edit']) && isset($_GET['activityNumber']))
+						echo '<p>Edit the fields to change your activity.</p>';
+					else
+						echo '<p>Complete the following fields to create a new activity.</p>';
+					
+					echo "<div id='filler'></div>";
+					if(isset($_POST)) {
+
+					}
+				?>
+			</div>
+				<br /><br />
+			<div class="activitiesleftcell">
+				<div class="userinputfields" style="text-align: right;">
+					<p style="font-weight: bold; <?php if($labelTitleError1 || $labelTitleError2 || $labelTitleError3) { echo 'color: #FF0000;'; } ?>">Activity Title: </p>
+						<br />
+					<p class="nospace" <?php if($labelDescriptionError1 || $labelDescriptionError2) { echo 'style="color: #FF0000;"'; } ?>>Activity Description:</p>
+						<br /><br />
+					<p class="nospace" <?php if($labelImageError1 || $labelImageError2) { echo 'style="color: #FF0000;"'; } ?>>Title Screen Image:</p>
+						<div class="spacer" style="height: 170px;"></div><br /><br />
+					<p class="nospace">Activity Theme Color:</p> 
+						<div class="spacer" style="height: 20px;"></div><br /><br />
+					<p class="nospace">Add Label(s) And Image:</p>
+					<span class="minimum">(Upload a picture and insert the label locations)</span> 
+				</div>
+			</div>
+			<div class="activitiesrightcell">
+				<div class="userinputfields" style="margin-top: 8px;">
+					<input type="text" name="labelTitle" size="58" value="<?php if(isset($_POST['labelTitle'])) { echo $_POST['labelTitle']; } ?>" placeholder="Title must be unique with no duplicate existing" />
+						<br /><br />
+					<input type="text" name="labelDescription" size="58" value="<?php if(isset($_POST['labelDescription'])) { echo $_POST['labelDescription']; } ?>" placeholder="Short one sentence explanation" />
+						<br /><br />
+					<div id="uploadPreview"></div><br /><button id="removeImage" class="remove_image">Remove Image</button><br /><br /><input type="hidden" name="labelTitleImageHidden" id="labelTitleImageHidden" value="<?php if(isset($_POST['labelTitleImage'])) { echo $_POST['labelTitleImage']; } ?>" /><input type="file" name="labelTitleImage" id="labelTitleImage" size="20"/><script src="../../../public/js/labeltitleimageupload.js"></script>
+						<br /><br />
+					<input type="color" name="labelThemeColor" size="58" value="<?php if(isset($_POST['labelThemeColor'])) { echo $_POST['labelThemeColor']; } else { echo "#FF3300"; } ?>" list="colors" />
+					<datalist id="colors">
+						<option>#FF3300</option>
+						<option>#C8BAFF</option>
+						<option>#FFCA61</option>
+						<option>#FFA347</option>
+						<option>#FF9696</option>
+						<option>#70A5FF</option>
+						<option>#645EFF</option>
+						<option>#FFC591</option>
+						<option>#470E00</option>
+						<option>#FF2491</option>
+						<option>#2E4AFF</option>
+						<option>#FF8661</option>
+					</datalist>
+						<br /><div class="spacer" style="height: 22px;"></div><br />
+					<input type="file" name="labelActivityImage" id="labelActivityImage" size="20" />
+						<br /><br />
+					<input type="button" id="CreateLabel" value="Create Label" /> <input type="button" id="UndoLabel" value="Undo Last Step" /> <input type="button" value="console" id="console" />					
+				</div>
+			</div>
+				<br /><br /><br />
+			<!--  HTML5 DRAWING CANVAS BEGINNING -->
+			<div class="labelCanvas">
+				<div class="labelCanvasLeftCell">
+					<div class="userinputfields">
+						<p class="labelNumber">1. </p><input type="text" name="labelLabel1" id="labelLabel1" maxlength="90" size="25" value="<?php if(isset($_POST['labelLabel1'])) { echo $_POST['labelLabel1']; } ?>" placeholder="Label 1" />
+							<br /><br /><br />
+						<span id="parentElement"></span>
+					</div>
+				</div>
+				<div class="labelCanvasRightCell">
+					<div class="userinputfields">
+						<canvas id="myCanvas" width="650" height="500">Your Browser does not support HTML5</canvas>
+					</div>
+				</div>
+			</div>
+			<!--  END OF HTML5 DRAWING CANVAS -->
+				<br /><br /><br />
+			<div class="activitiesleftcell">
+				<div class="userinputfields" style="text-align: right; margin-top: 8px;">
+					<p class="nospace">Publish Method:</p>
+						<div class="spacer" style="height: 20px;"></div><br /><br />
+					<p class="nospace">Add Creative Commons License:</p>
+						<div class="spacer" style="height: 20px;"></div><br /><br />
+					<p class="nospace">Allow the OCC Community to copy this activity:</p> 
+				</div> 
+			</div>
+			<div class="activitiesrightcell">
+				<div class="userinputfields">
+					<input type="radio" name="labelPublishMethod" value="private" <?php if(isset($_POST['labelPublishMethod']) && ($_POST['labelPublishMethod'] == "private")) { echo 'checked="checked"'; } else { echo 'checked="checked"'; } ?> /><span>Draft (Cannot be searched or viewed by the public)</span><br />
+					<input type="radio" name="labelPublishMethod" value="public" <?php if(isset($_POST['labelPublishMethod']) && ($_POST['labelPublishMethod'] == "public")) { echo 'checked="checked"'; } ?> /><span>Public (Able to be searched and viewed by the public)</span>
+						<br /><br />
+					<input type="radio" name="labelCreativeCommon" id="labelCreativeCommonNo" value="no" <?php if(isset($_POST['labelCreativeCommon']) && ($_POST['labelCreativeCommon'] == "no")) { echo 'checked="checked"'; } else { echo 'checked="checked"'; } ?> /><span>No (Attribution - Non Commercial - NoDerivatives 4.0 International)</span><br />
+					<input type="radio" name="labelCreativeCommon" id="labelCreativeCommonYes" value="yes" <?php if(isset($_POST['labelCreativeCommon']) && ($_POST['labelCreativeCommon'] == "yes")) { echo 'checked="checked"'; } ?> /><span>Yes (Attribution - Non Commercial - ShareAlike 4.0 International)</span>			
+						<br /><br />
+					<input type="radio" name="labelAllowCopy" id="labelAllowCopyNo" value="no" <?php if(isset($_POST['labelAllowCopy']) && ($_POST['labelAllowCopy'] == "no")) { echo 'checked="checked"'; } else { echo 'checked="checked"'; } if(isset($_POST['labelCreativeCommon']) && ($_POST['labelCreativeCommon'] == "no")) { echo " disabled"; } else { echo " disabled"; } ?> /><span>No (Disable from sharing this activity with the OCC community if CCL is set to No)</span><br />
+					<input type="radio" name="labelAllowCopy" id="labelAllowCopyYes" value="yes" <?php if(isset($_POST['labelAllowCopy']) && ($_POST['labelAllowCopy'] == "yes")) { echo 'checked="checked"'; } if(isset($_POST['labelCreativeCommon']) && ($_POST['labelCreativeCommon'] == "no")) { echo " disabled"; } ?> /><span>Yes (Disable from sharing this activity with the OCC community if CCL is set to No)</span>											
+					<script src="../../../public/js/enablebutton.js"></script>
+				</div>
+			</div>
+		</div>
+		<br /><br /><br />
+		<input type="submit" name="labelSubmit" value="Submit Activity" style="width: 400px; height: 40px;"/>
+	</form>
+	<br /><br /><br /><hr /><br /><div style="text-align: center"><a href="../activityMain/activity.php">Return to homepage</a></div>
+<?php 
+	require_once("../../../resources/templates/footer.php");
+	viewsFooter("../../../public/img/layout/occlogo_bottom.png");
+?>
