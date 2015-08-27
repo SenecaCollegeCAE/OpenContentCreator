@@ -5,6 +5,7 @@
 	require_once("../../../resources/templates/header.php");
 	docheaderWithJqueryLibraries("Open Content Creator - Label Activity", "../../../public/css/style.css", "../../../public/img/myicon.ico", array("../../../resources/library/jquery.leanModal.min.js", "../../../public/js/modaltrigger.js", "../../../resources/library/tinymce/tinymce.min.js", "../../../resources/library/tinymce/tinymceConfiguration.js", "../../../public/js/dynamiclabelelements.js", "../../../public/js/topscroller.js"));
 ?>
+	
 	</head>
 	<body>
 	<?php
@@ -17,7 +18,7 @@
 		helpMenu();
 		//End of Top Navigation bar
 	?>
-	<form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multi/form-data">
+	<form name="labelForm" id="labelForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
 		<input type="hidden" value="<?php if(isset($_POST['activityNumber'])) { echo $_POST['activityNumber']; } ?>" name="activityNumber" id="activityNumber" />
 		<div class="activitiesmaintable">
 			<div class="titleblock">
@@ -30,7 +31,13 @@
 					
 					echo "<div id='filler'></div>";
 					if(isset($_POST)) {
-
+						if($labelTitleError1)
+							echo '<p class="activityerror">*Activity Title cannot be empty</p>';
+						
+						
+						if($labelActivityImageError1)
+							echo '<p class="activityerror">*Activity Image is mandatory</p>';
+						echo "<br />";
 					}
 				?>
 			</div>
@@ -73,17 +80,23 @@
 						<option>#FF8661</option>
 					</datalist>
 						<br /><div class="spacer" style="height: 22px;"></div><br />
-					<input type="file" name="labelActivityImage" id="labelActivityImage" size="20" />
+					<input type="hidden" name="labelActivityImageHidden" id="labelActivityImageHidden" value="<?php if(isset($_POST['labelActivityImage'])) { echo $_POST['labelActivityImage']; } ?>" /><input type="file" name="labelActivityImage" id="labelActivityImage" size="20" />
 						<br /><br />
 					<input type="button" id="CreateLabel" value="Create Label" /> <input type="button" id="UndoLabel" value="Undo Last Step" /> <input type="button" value="console" id="console" />					
 				</div>
 			</div>
 				<br /><br /><br />
 			<!--  HTML5 DRAWING CANVAS BEGINNING -->
+			<input type="hidden" id="labelPostback" name="labelPostback" value="<?php if(isset($_POST['labelPostback'])) { echo $_POST['labelPostback']; } else { echo "0"; } ?>" />
+			<input type="hidden" id="labelCurrentLabel" name="labelCurrentLabel" value="<?php if(isset($_POST['labelCurrentLabel'])) { echo $_POST['labelCurrentLabel']; } ?>" />
+			<input type="hidden" id="labelNumOfTimesCreateWasClicked" name="labelNumOfTimesCreateWasClicked" value="<?php if(isset($_POST['labelNumOfTimesCreateWasClicked'])) { echo $_POST['labelNumOfTimesCreateWasClicked']; } ?>" />	
+			<input type="hidden" id="labelLabelArray" name="labelLabelArray" value='<?php if(isset($_POST['labelLabelArray'])) { echo $_POST['labelLabelArray']; } ?>' />
+			<input type="hidden" id="labelCoordsArray" name="labelCoordsArray" value='<?php if(isset($_POST['labelCoordsArray'])) { echo $_POST['labelCoordsArray']; } ?>' />
+			<input type="hidden" id="labelImageTarget" name="labelImageTarget" value='<?php if(isset($_POST['labelImageTarget'])) { echo $_POST['labelImageTarget']; } ?>' />
 			<div class="labelCanvas">
 				<div class="labelCanvasLeftCell">
 					<div class="userinputfields">
-						<p class="labelNumber">1. </p><input type="text" name="labelLabel1" id="labelLabel1" maxlength="90" size="25" value="<?php if(isset($_POST['labelLabel1'])) { echo $_POST['labelLabel1']; } ?>" placeholder="Label 1" />
+						<p class="labelNumber">1. </p><input type="text" name="labelLabel1" id="labelLabel1" maxlength="90" size="25" value="" placeholder="Label 1" />
 							<br /><br /><br />
 						<span id="parentElement"></span>
 					</div>
