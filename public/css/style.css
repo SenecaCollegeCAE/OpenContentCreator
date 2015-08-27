@@ -53,7 +53,7 @@ textarea {
     height: 100px;
 }
 
-input[type="submit"], input[type="file"], button.add_field_button, button.remove_image, button.save_trivia_button { 
+input[type="submit"], input[type="file"], button.add_field_button, button.remove_image, button.save_trivia_button, input[type="button"] { 
   	-webkit-box-sizing: border-box;
   	-moz-box-sizing: border-box;
   	box-sizing: border-box;
@@ -81,12 +81,12 @@ input[type="submit"], input[type="file"], button.add_field_button, button.remove
   	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, input[type="button"]:hover {
   	color: #fff;
   	background-color: #686868;
 }
 
-input[type="submit"]:active {
+input[type="submit"]:active, input[type="button"]:active {
   	-webkit-box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
   	-moz-box-shadow:inset 0 1px 5px rgba(0, 0, 0, 0.1);
   	box-shadow:inset 0 1px 5px rgba(0, 0, 0, 0.1);
@@ -753,4 +753,42 @@ fieldset.input_step_wrap {
 	overflow: hidden;
 }
 
+/******************* label.php ********************/
 
+div.labelCanvas {
+	width: 900px;
+	height: 500px;
+	display: inline-block;
+}
+
+.labelCanvasLeftCell {
+	width: 250px;
+	height: 100%;
+	text-align: left;
+	vertical-align: top;
+	display: inline-block;
+	float: left;
+}
+
+.labelCanvasRightCell {
+	width: 646px;
+	height: 100%;
+	text-align: left;
+	vertical-align: top;
+	display: inline-block;
+	float: right;
+}
+
+canvas#myCanvas {
+	border: 1pt solid black;
+}
+
+.labelNumber {
+	display: inline;
+}
+
+.labelSpacer {
+	display: block;
+	width: 26px;
+	height: 30px;
+}

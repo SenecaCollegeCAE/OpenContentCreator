@@ -140,7 +140,7 @@ h2.questionnumber {
 
 .questionbox {
 	width: 100%;
-	height: 120px;
+	height: 145px;
 	background-color: rgba(255, 255, 255, 0.3);
 	display: inline-block;
 	z-index: 40;
@@ -183,12 +183,29 @@ label.button:hover {
 
 .lifelines {
 	width: 100%;
-	height: 70px;
+	height: 55px;
 	background-color: rgba(255, 255, 255, 0.3);
 	display: inline-block;
 	z-index: 40;
 	padding: 0;
 	margin-top: -15px;
+	float: left;
+	padding-top: 15px;
+}
+
+div.table {
+	margin-top: 25px;
+}
+
+span.lifelinefont {
+	font-size: 18pt;
+}
+
+div.lifelinespacer {
+	display: inline-block;
+	width: 50px;
+	height: 20px;
+	z-index: 40;
 }
 
 div.score {
@@ -196,7 +213,7 @@ div.score {
 	height: 30px;
 	background-color: rgba(255, 255, 255, 0.3);
 	z-index: 40;
-	dispaly: inline-block;
+	display: inline-block;
 	float: left;
 	padding: 10px;
 	padding-top: 20px;
@@ -205,6 +222,10 @@ div.score {
 
 div.feedback > span  {
 	font-size: 14pt;
+}
+
+img.iconClick {
+	cursor: pointer;
 }
 
 div.feedback {
