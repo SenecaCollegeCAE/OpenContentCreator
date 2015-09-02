@@ -24,7 +24,7 @@
 			<div class="activityRightCopying">
 				<?php 
 					if($userCreator)
-						echo "<a href='./trivia.php?activityNumber=" . $triviaObj[0] . "'>Edit this activity</a>";
+						echo "<a href='./label.php?activityNumber=" . $triviaObj[0] . "'>Edit this activity</a>";
 				?>
 			</div>
 			<iframe class="iframePresentation2" src="../trivia/triviadisplay/index.php" seamless="seamless" scrolling="no">Your Browser does not support Iframes.</iframe>
