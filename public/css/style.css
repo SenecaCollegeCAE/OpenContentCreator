@@ -649,9 +649,9 @@ div > .thumb-image {
 	color: #FF0000;
 }
 
-/****************** webquestactivity.php, triviaactivity.php ******************/
+/****************** webquestactivity.php, triviaactivity.php, labelactivity.php ******************/
 
-div.webquestactivitiesmaintable, div.triviaactivitiesmaintable {
+div.webquestactivitiesmaintable, div.triviaactivitiesmaintable, div.labelactivitiesmaintable {
 	display: inline-block;
 	width: 910px;
 	text-align: left;

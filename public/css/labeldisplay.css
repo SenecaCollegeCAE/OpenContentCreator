@@ -1,0 +1,195 @@
+/****************** labeldisplay.php - IFRAME ******************/
+body {
+    text-align: center;
+    font-size: 10pt;
+    font-family: "Helvetica", sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background: transparent;
+    background-color: #FFFFFF;
+    color: #000000;
+    overflow-y: auto;
+}
+
+.labelbackground {
+	display: inline-block;
+	width: 100%;
+	height: 800px;
+	overflow: hidden;
+	font-family: Trebuchet MS;
+}
+
+.labelTable {
+	width: 100%;
+	height: 650px;
+	display: block;
+	z-index: 30;
+}
+
+.labelleftbox {
+	width: 23%;
+	height: 650px;
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index: 30;
+	display: inline-block;
+	overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    float: left;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.labelrightbox {
+	width: 73%;
+	height: 650px;
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index: 30;
+	display: inline-block;
+	overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    float: right;
+}
+
+.labelmainbox {
+	width: 80%;
+	height: 610px;
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index: 30;
+	display: block;
+	padding: 20px;
+	overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 70px;
+}
+
+.labellicense {
+	width: 100%;
+	height: 60px;
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index: 30;
+	display: block;
+	padding: 5px;
+	margin-top: 666px;
+}
+
+a:link, a:visited, a:active {
+    color: #000000;
+}
+
+a:hover {
+    color: #FFFFFF;
+}
+
+a.license:hover {
+	color: #000000;
+}
+
+hr {
+	border: 0;
+    height: 2px;
+    margin:18px 0;
+    position:relative;
+    background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 10%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0) 90%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(10%,rgba(0,0,0,0)), color-stop(50%,rgba(0,0,0,0.65)), color-stop(90%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 10%,rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 90%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 10%,rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 90%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 10%,rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 90%,rgba(0,0,0,0) 100%); /* IE10+ */
+    background: linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 10%,rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 90%,rgba(0,0,0,0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+img {
+	max-width: 300px;
+	height: auto;
+	border: none;
+}
+
+button#startLabel {
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	box-sizing: border-box;
+  	display: inline-block;
+  	outline: 0;
+  	border: 0;
+  	color: #edf4f9;
+  	text-decoration: none;
+  	background-color: #404040;
+  	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  	font-size: 1.1em;
+  	font-weight: bold;
+  	padding: 5px 10px 5px 10px;
+  	line-height: normal;
+  	text-align: center;
+  	vertical-align: middle;
+  	cursor: pointer;
+  	text-transform: uppercase;
+  	text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+  	-webkit-border-radius: 3px;
+  	-moz-border-radius: 3px;
+  	border-radius: 3px;
+  	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+button#startLabel:hover {
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	box-sizing: border-box;
+  	display: inline-block;
+  	outline: 0;
+  	border: 0;
+  	color: #edf4f9;
+  	text-decoration: none;
+  	background-color: #707070;
+  	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  	font-size: 1.1em;
+  	font-weight: bold;
+  	padding: 5px 10px 5px 10px;
+  	line-height: normal;
+  	text-align: center;
+  	vertical-align: middle;
+  	cursor: pointer;
+  	text-transform: uppercase;
+  	text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+  	-webkit-border-radius: 3px;
+  	-moz-border-radius: 3px;
+  	border-radius: 3px;
+  	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/********** angularjs animation ****************/
+
+main[ng-view] {
+	position: absolute;
+	width: 100%;
+	height: 405px;
+}
+
+.slider.ng-enter, .slider.ng-leave {
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+}
+
+.slider.ng-enter {
+	left: 100%;
+}
+
+.slider.ng-leave {
+	left: 0;
+}
+
+.slider.ng-enter-active {
+	left: 0;
+}
+
+.slider.ng-leave-active {
+	left: -100%;
+}
