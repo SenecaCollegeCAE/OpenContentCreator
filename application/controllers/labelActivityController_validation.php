@@ -2,6 +2,8 @@
 	require_once("../../../resources/models/Label.php"); //call the label model class, it also call the parent activity model class
 	$label = new Label();
 	
+	require_once("./labelSessions.php"); //clear the previous sessions of submits if any before setting a new one
+	
 	$label->deleteAllTemporaryFiles("TEMP", $userInfoArray[1]);
 	//require_once("./labelSessions.php");
 	
@@ -18,6 +20,7 @@
 	$labelImageError1 = $labelImageError2 = false;
 	
 	$labelActivityImageError1 = $labelActivityImageError2 = $labelActivityImageError3 = false;
+	$labelLabels = []; //Array used to store label element values
 	$labelLabelError1 = [];
 	$labelLabelError2 = [];
 	$labelLabelError1[0] = $labelLabelError1[1] = $labelLabelError1[2] = $labelLabelError1[3] = $labelLabelError1[4] = $labelLabelError1[5] = $labelLabelError1[6] = $labelLabelError1[7] = $labelLabelError1[8] = false;
@@ -84,7 +87,6 @@
 			}
 		}
 		
-		$labelLabels = [];
 		array_push($labelLabels, $_POST['labelLabel1']);
 		
 		if(isset($_POST['labelLabel2'])) { array_push($labelLabels, $_POST['labelLabel2']); }	
@@ -98,7 +100,7 @@
 		
 		for($i = 0; $i < count($labelLabels); $i++) {
 			if(isset($labelLabels[$i])) {
-				if(strlen($labelLabels[$i] == 0)) {
+				if(strlen($labelLabels[$i]) == 0) {
 					$labelLabelError1[$i] = true;
 				}
 				else {
@@ -120,6 +122,60 @@
 		$creativeCommon = $_POST['labelCreativeCommon'];
 		$allowCopy = isset($_POST['labelAllowCopy']) ? $_POST['labelAllowCopy'] : "no";
 		
-		//var_dump($_POST, $_FILES);
+		//var_dump($_POST, $labelLabels);
+		
+		if(!$labelTitleError1 && !$labelTitleError2 && !$labelTitleError3 && !$labelDescriptionError1 && !$labelDescriptionError2 && !$labelImageError1 && !$labelImageError2 && !$labelActivityImageError1 && !$labelActivityImageError2 && !$labelActivityImageError3) {
+			$allLabelElementsThatAreWrong = false;
+			
+			for($i = 0; $i < count($labelLabels); $i++) {
+				if(isset($labelLabels[$i])) {
+					if(!$labelLabelError1[$i] && !$labelLabelError2[$i])
+						$allLabelElementsThatAreWrong = false;
+					else 
+						$allLabelElementsThatAreWrong = true;
+				}
+			}
+			
+			if(!$allLabelElementsThatAreWrong) {
+				if($image != "") {
+					$sessionImage = getImageName();
+					
+					if($sessionImage != "") {
+						//delete the old fine first
+						$label->deleteUploadedFileFromBefore($sessionImage, $userInfoArray[1]);
+					}
+					
+					$newImageName = $label->userUploadFile($image, $imageTemp, $userInfoArray[1]);
+				}
+				else {
+					$newImageName = "";
+					
+					if(empty($_POST['labelTitleImageHidden'])) { //if the user removes image in edit mode, hidden field image value will be blank
+						$sessionImage = getImageName();
+						if(isset($_GET['activityNumber']) || isset($_POST['activityNumber']) && $sessionImage != "")
+							$label->deleteUploadedFileFromBefore($sessionImage, $userInfoArray[1]); //delete the image from before and unset the $_SESSION image name
+					}
+					else {
+						unsetImageSession();
+						$newImageName = $_POST['labelTitleImageHidden'];
+					}
+				}
+				
+				$activityImageLocation = $_POST['labelImageTarget'];
+				$newActivityImageName = $label->addTimestampToActivityImage($activityImageLocation, $activityImage, $userInfoArray[1]);
+				$numberOfTimesCreateWasClicked = $_POST['labelNumOfTimesCreateWasClicked'];
+				$activityImageCoordinates = json_decode(stripslashes($_POST['labelCoordsArray']));
+				
+				if(isset($_POST['activityNumber']) && $_POST['activityNumber'] != "") { //edit mode operations
+					
+				}
+				else {
+					$label->insertLabelActivityToDatabase($title, $description, $newImageName, $color, $newActivityImageName, $labelLabels, $numberOfTimesCreateWasClicked, $activityImageCoordinates, $publishMethod, $creativeCommon, $allowCopy, $userInfoArray[0]);
+				}
+				
+				header("Location: ../activityMain/activity.php?submit=yes");
+				exit;
+			}
+		}
 	}
 ?>
