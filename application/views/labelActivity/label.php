@@ -33,10 +33,35 @@
 					if(isset($_POST)) {
 						if($labelTitleError1)
 							echo '<p class="activityerror">*Activity Title cannot be empty</p>';
+						else if($labelTitleError2)
+							echo '<p class="activityerror">*Activity Title can only have letters, numbers, dashes or spaces</p>';
+						else if($labelTitleError3)
+							echo '<p class="activityerror">*Activity Title already exists in database</p>';
 						
+						if($labelDescriptionError1)
+							echo '<p class="activityerror">*Activity Description cannot be empty</p>';
+						else if($labelDescriptionError2)
+							echo '<p class="activityerror">*Activity Description can only have letters, numbers, commas, periods, single quotes or spaces only</p>';
+
+						if($labelImageError1)
+							echo '<p class="activityerror">*Title Screen Image cannot be more than 1.5 mb</p>';
+						else if($labelImageError2)
+							echo '<p class="activityerror">*Title Screen Image must be either in jpg, png or jpeg format</p>';
 						
 						if($labelActivityImageError1)
-							echo '<p class="activityerror">*Activity Image is mandatory</p>';
+							echo '<p class="activityerror">*Activity Image is mandatory for activity to work</p>';
+						else if($labelActivityImageError2)
+							echo '<p class="activityerror">*Activity Image cannot be more than 1.5mb</p>';
+						else if($labelActivityImageError3)
+							echo '<p class="activityerror">*Activity Image must be either in jpg, png or jpeg format</p>';
+						
+						for($i = 0; $i < count($labelLabels); $i++) {
+							if($labelLabelError1[$i])
+								echo '<p class="activityerror">Label Element '. ($i + 1) .' cannot be empty</p>';
+							else if($labelLabelError2[$i])
+								echo '<p class="activityError">Label Element '. ($i + 1) .' can only have letters, numbers, commas, periods, single quotes, question marks, exclamation marks or spaces only</p>';
+						}
+						
 						echo "<br />";
 					}
 				?>
@@ -52,7 +77,7 @@
 						<div class="spacer" style="height: 170px;"></div><br /><br />
 					<p class="nospace">Activity Theme Color:</p> 
 						<div class="spacer" style="height: 20px;"></div><br /><br />
-					<p class="nospace">Add Label(s) And Image:</p>
+					<p class="nospace" <?php if($labelActivityImageError1 || $labelActivityImageError2 || $labelActivityImageError3) { echo 'style="color: #FF0000;"'; } else { for($i = 0; $i < count($labelLabels); $i++) { if(isset($labelLabels[$i])) { if($labelLabelError1[$i] || $labelLabelError2[$i]) { echo 'style="color: #FF0000;"'; } } } } ?>>Add Label(s) And Image:</p>
 					<span class="minimum">(Upload a picture and insert the label locations)</span> 
 				</div>
 			</div>
