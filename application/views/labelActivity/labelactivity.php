@@ -29,7 +29,7 @@
 			</div>
 			<iframe class="iframePresentation2" src="../labelActivity/labeldisplay/index.php" seamless="seamless" scrolling="no">Your Browser does not support Iframes.</iframe>
 			<br /><br />
-			<?php var_dump($labelObj, $userObj); ?>
+			<?php //var_dump($labelObj, $userObj); ?>
 		</div>
 		<br /><br /><br /><hr /><br /><div style="text-align: center"><a href="../activityMain/activity.php">Return to homepage</a></div>
 <?php 
