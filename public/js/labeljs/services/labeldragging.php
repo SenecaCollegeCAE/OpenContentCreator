@@ -144,7 +144,7 @@ app.factory("labelDraggingFactory", function($window, createReplayButtonFactory)
 		                if(score > num) {
 			            	//console.log("you win here");
 			            	statusText.style.color = "#009900";
-		                	statusText.innerHTML = 'Congratulations! You have completed the label activity. Play again?&nbsp;';
+		                	statusText.innerHTML = 'Congratulations! You have completed the label activity.&nbsp;';
 							
 							createReplayButtonFactory.createButton(scope);
 		                }
