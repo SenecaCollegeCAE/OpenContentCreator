@@ -13,7 +13,10 @@
 		?>
 	</div>
 	<div class="labelrightbox">
+		<div ng-init="init()"></div>
+		<br />
 		<h3 id="statusText">Drag the label number to the correct area.</h3>
+		<br /><br />
 		<div id="container"></div><!-- Used for the label dragging activity / area -->
 	</div>
 </div>

@@ -15,9 +15,10 @@
 		<script src="../../../../resources/library/angular-animate.min.js"></script>
 		<script src="../../../../resources/library/kinetic-v5.0.1.min.js"></script>
 		<script src="../../../../public/js/labeljs/app.js"></script>
+		<script src="../../../../public/js/labeljs/services/labeldragging.php"></script>
+		<script src="../../../../public/js/labeljs/services/createreplaybutton.js"></script>
 		<script src="../../../../public/js/labeljs/controllers/homeController.js"></script>
-		<script src="../../../../public/js/labeljs/controllers/labelController.js"></script>
-		<script src="../../../../public/js/labeldragging.php"></script>
+		<script src="../../../../public/js/labeljs/controllers/labelController.js"></script>		
 	</head>
 	<body>
 		<div class="labelbackground" style="background-color: <?php echo $activityObj[4]; ?>;">
