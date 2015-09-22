@@ -3,7 +3,7 @@
 	require_once("../../controllers/helpers/storedActivityInfo.php");
 	require_once("../../controllers/labelActivityController_Validation.php");
 	require_once("../../../resources/templates/header.php");
-	docheaderWithJqueryLibraries("Open Content Creator - Label Activity", "../../../public/css/style.css", "../../../public/img/myicon.ico", array("../../../resources/library/jquery.leanModal.min.js", "../../../public/js/modaltrigger.js", "../../../resources/library/tinymce/tinymce.min.js", "../../../resources/library/tinymce/tinymceConfiguration.js", "../../../public/js/dynamiclabelelements.js", "../../../public/js/topscroller.js"));
+	docheaderWithJqueryLibraries("Open Content Creator - Label Activity", "../../../public/css/style.css", "../../../public/img/myicon.ico", array("../../../resources/library/jquery.leanModal.min.js", "../../../public/js/modaltrigger.js", "../../../resources/library/tinymce/tinymce.min.js", "../../../resources/library/tinymce/tinymceConfiguration.js", "../../../public/js/dynamiclabelelements.php", "../../../public/js/topscroller.js"));
 ?>
 	
 	</head>
@@ -87,7 +87,7 @@
 						<br /><br />
 					<input type="text" name="labelDescription" size="58" value="<?php if(isset($_POST['labelDescription'])) { echo $_POST['labelDescription']; } ?>" placeholder="Short one sentence explanation" />
 						<br /><br />
-					<div id="uploadPreview"></div><br /><button id="removeImage" class="remove_image">Remove Image</button><br /><br /><input type="hidden" name="labelTitleImageHidden" id="labelTitleImageHidden" value="<?php if(isset($_POST['labelTitleImage'])) { echo $_POST['labelTitleImage']; } ?>" /><input type="file" name="labelTitleImage" id="labelTitleImage" size="20"/><script src="../../../public/js/labeltitleimageupload.js"></script>
+					<div id="uploadPreview"></div><br /><button id="removeImage" class="remove_image">Remove Image</button><br /><br /><input type="hidden" name="labelTitleImageHidden" id="labelTitleImageHidden" value="<?php if(isset($_POST['labelTitleImage'])) { echo $_POST['labelTitleImage']; } else if(isset($_POST['labelTitleImageHidden'])) { echo $_POST['labelTitleImageHidden']; } ?>" /><input type="file" name="labelTitleImage" id="labelTitleImage" size="20"/><script src="../../../public/js/labeltitleimageupload.js"></script>
 						<br /><br />
 					<input type="color" name="labelThemeColor" size="58" value="<?php if(isset($_POST['labelThemeColor'])) { echo $_POST['labelThemeColor']; } else { echo "#FF3300"; } ?>" list="colors" />
 					<datalist id="colors">
@@ -105,7 +105,7 @@
 						<option>#FF8661</option>
 					</datalist>
 						<br /><div class="spacer" style="height: 22px;"></div><br />
-					<input type="hidden" name="labelActivityImageHidden" id="labelActivityImageHidden" value="<?php if(isset($_POST['labelActivityImage'])) { echo $_POST['labelActivityImage']; } ?>" /><input type="file" name="labelActivityImage" id="labelActivityImage" size="20" />
+					<input type="hidden" name="labelActivityImageHidden" id="labelActivityImageHidden" value="<?php if(isset($_POST['labelActivityImage'])) { echo $_POST['labelActivityImage']; } else if(isset($_POST['labelActivityImageHidden'])) { echo $_POST['labelActivityImageHidden']; } ?>" /><input type="file" name="labelActivityImage" id="labelActivityImage" size="20" />
 						<br /><br />
 					<input type="button" id="CreateLabel" value="Create Label" /> <input type="button" id="UndoLabel" value="Undo Last Step" /> <input type="button" value="console" id="console" />					
 				</div>
