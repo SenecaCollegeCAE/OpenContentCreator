@@ -8,6 +8,7 @@
 <div class="triviamainbox"><!--  home -->
 	<h1 class="title"><?php echo $activityObj[1]; ?></h1>
 	<article><?php echo $activityObj[2]; ?></article>
+	<br />
 	<?php 
 		if($activityObj[3] != "") {
 			echo '<img src="../' . $activityObj[3] . '" />';
