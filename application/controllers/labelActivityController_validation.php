@@ -4,12 +4,37 @@
 	
 	require_once("./labelSessions.php"); //clear the previous sessions of submits if any before setting a new one
 	
-	$label->deleteAllTemporaryFiles("TEMP", $userInfoArray[1]);
+	if(empty($_POST['labelSubmit']))
+		$label->deleteAllTemporaryFiles("TEMP", $userInfoArray[1]); //This should only delete the TEMP picture file when it is the first time going to the form. Shouldn't delete during postbacks
 	//require_once("./labelSessions.php");
 	
 	//Edit mode presets *************************************************************************************************
 	if(isset($_GET['activityNumber']) && isset($activityObj)) {
 		$_POST['activityNumber'] = $activityObj[0];
+		
+		//check if activity belongs to you before you can edit it, otherwise redirect back to main page
+		if(isset($_POST['activityNumber']) && $_POST['activityNumber'] != "") {
+			if(!$label->checkIfActivityIsYours($userInfoArray[0], $_POST['activityNumber'])) { //returns trure of false
+				header("Location: ../activityMain/activity.php");
+				exit;
+			}
+			else { //activity belongs to you, populate the $_POST fields with your info
+				$label->setLabelActivityForEdit($activityObj); //set the label class obj with the edit info and set the $_POST info as well
+				$_POST['labelTitle'] = $activityObj[1];
+				$_POST['labelDescription'] = $activityObj[2];
+				$_POST['labelTitleImage'] = $activityObj[3];
+				setImageName($_POST['labelTitleImage']);
+				$_POST['labelThemeColor'] = $activityObj[4];
+				$_POST['labelActivityImage'] = $activityObj[5];
+				$_POST['labelCurrentLabel'] = $activityObj[7];
+				$_POST['labelNumOfTimesCreateWasClicked'] = $activityObj[8];
+				$_POST['labelLabelArray'] = json_encode($activityObj[6]);
+				$_POST['labelCoordsArray'] = json_encode($activityObj[9]);
+				$_POST['labelImageTarget'] = $label->renameFileForHiddenLabelImageTarget($activityObj[5], $userInfoArray[1]);
+				$_POST['labelPostback'] = 1; //Set it to 1 because it is in edit mode
+				//var_dump($_POST);
+			}
+		}
 		
 	}
 	//End of edit mode presets *************************************************************************************************
@@ -41,12 +66,11 @@
 			$labelTitleError2 = true;
 		}
 		
-		/*
 		if(!isset($_POST['activityNumber'])) {
-			if($trivia->checkForDuplicateTitle($title)) { //Check if there is duplicate title by SQL in database
+			if($label->checkForDuplicateTitle($title)) { //Check if there is duplicate title by SQL in database
 				$labelTitleError3 = true;
 			}
-		}*/
+		}
 		
 		if(strlen($description) == 0) {
 			$labelDescriptionError1 = true;
@@ -70,7 +94,12 @@
 		$activityImageTemp = isset($_FILES['labelActivityImage']['tmp_name']) ? $_FILES['labelActivityImage']['tmp_name'] : "";
 		
 		if($activityImage == "") { //if activity image is empty
-			$labelActivityImageError1 = true;
+			if(!isset($_POST['labelActivityImageHidden'])) {
+				$labelActivityImageError1 = true;
+			}
+			else {
+				$activityImage = $_POST['labelActivityImageHidden']; //$label->removeTimeStampFromImage($_POST['labelActivityImageHidden']);
+			}			
 		}
 		else {
 			if($_FILES['labelActivityImage']['size'] > 1500000) { //if image is more than 1.5 mb
@@ -78,6 +107,7 @@
 			}
 			else {
 				$activityImageFileType = pathinfo($_FILES['labelActivityImage']['name'], PATHINFO_EXTENSION);
+				
 				if($activityImageFileType != "jpg" && $activityImageFileType != "png" && $activityImageFileType != "jpeg" && $activityImageFileType != "") { //if image extention is jpg, png, jpeg or user choose not to use an image
 					$labelActivityImageError3 = true;	
 				}
@@ -141,8 +171,9 @@
 					$sessionImage = getImageName();
 					
 					if($sessionImage != "") {
-						//delete the old fine first
-						$label->deleteUploadedFileFromBefore($sessionImage, $userInfoArray[1]);
+						//delete the old file first if the images are differnt from last time (Meaning the user decices to change the title image or not use it)
+						if(strcmp($sessionImage, $_POST['labelTitleImage']) != 0)
+							$label->deleteUploadedFileFromBefore($sessionImage, $userInfoArray[1]);
 					}
 					
 					$newImageName = $label->userUploadFile($image, $imageTemp, $userInfoArray[1]);
@@ -152,8 +183,10 @@
 					
 					if(empty($_POST['labelTitleImageHidden'])) { //if the user removes image in edit mode, hidden field image value will be blank
 						$sessionImage = getImageName();
-						if(isset($_GET['activityNumber']) || isset($_POST['activityNumber']) && $sessionImage != "")
-							$label->deleteUploadedFileFromBefore($sessionImage, $userInfoArray[1]); //delete the image from before and unset the $_SESSION image name
+						if(isset($_GET['activityNumber']) || isset($_POST['activityNumber']) && $sessionImage != "") {
+							if(strcmp($sessionImage, $_POST['labelTitleImage']) != 0)
+								$label->deleteUploadedFileFromBefore($sessionImage, $userInfoArray[1]); //delete the image from before and unset the $_SESSION image name
+						}
 					}
 					else {
 						unsetImageSession();
@@ -162,12 +195,13 @@
 				}
 				
 				$activityImageLocation = $_POST['labelImageTarget'];
-				$newActivityImageName = $label->addTimestampToActivityImage($activityImageLocation, $activityImage, $userInfoArray[1]);
+				
+				$newActivityImageName = $label->addTimestampToActivityImage($activityImageLocation, $activityImage, $activityObj[5], $userInfoArray[1]);
 				$numberOfTimesCreateWasClicked = $_POST['labelNumOfTimesCreateWasClicked'];
 				$activityImageCoordinates = json_decode(stripslashes($_POST['labelCoordsArray']));
 				
 				if(isset($_POST['activityNumber']) && $_POST['activityNumber'] != "") { //edit mode operations
-					
+					$label->editLabelActivityToDatabase($_POST['activityNumber'], $title, $description, $newImageName, $color, $newActivityImageName, $labelLabels, $numberOfTimesCreateWasClicked, $activityImageCoordinates, $publishMethod, $creativeCommon, $allowCopy, $userInfoArray[0]);
 				}
 				else {
 					$label->insertLabelActivityToDatabase($title, $description, $newImageName, $color, $newActivityImageName, $labelLabels, $numberOfTimesCreateWasClicked, $activityImageCoordinates, $publishMethod, $creativeCommon, $allowCopy, $userInfoArray[0]);

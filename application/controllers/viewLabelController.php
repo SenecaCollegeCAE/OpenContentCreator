@@ -15,7 +15,7 @@
 		//check if you are logged in
 		
 		$userCreator = false;
-		if($userInfoArray[0] == $labelObj[12]) { //check if you are the user that made this activity
+		if($userInfoArray[0] == $labelObj[13]) { //check if you are the user that made this activity
 			$userCreator = true; //then allow the edit button to show, otherwise just show activity only
 		}
 		
