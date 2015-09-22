@@ -123,7 +123,7 @@
 						<br /><br />
 					<input type="text" name="webquestDescription" size="58" value="<?php if(isset($_POST['webquestDescription'])) { echo $_POST['webquestDescription']; } ?>" placeholder="Short one sentence explanation" />
 						<br /><br />
-					<div id="uploadPreview"></div><br /><button id="removeImage" class="remove_image">Remove Image</button><br /><br /><input type="hidden" name="webquestTitleImageHidden" id="webquestTitleImageHidden" value="<?php if(isset($_POST['webquestTitleImage'])) { echo $_POST['webquestTitleImage']; } ?>" /><input type="file" name="webquestTitleImage" id="webquestTitleImage" size="20"/><script src="../../../public/js/webquesttitleimageupload.js"></script>
+					<div id="uploadPreview"></div><br /><button id="removeImage" class="remove_image">Remove Image</button><br /><br /><input type="hidden" name="webquestTitleImageHidden" id="webquestTitleImageHidden" value="<?php if(isset($_POST['webquestTitleImage'])) { echo $_POST['webquestTitleImage']; } else if(isset($_POST['webquestTitleImageHidden'])) { echo $_POST['webquestTitleImageHidden']; } ?>" /><input type="file" name="webquestTitleImage" id="webquestTitleImage" size="20"/><script src="../../../public/js/webquesttitleimageupload.js"></script>
 						<br /><br />
 					<input type="color" name="webquestThemeColor" size="58" value="<?php if(isset($_POST['webquestThemeColor'])) { echo $_POST['webquestThemeColor']; } else { echo "#FF3300"; } ?>" list="colors" />
 					<datalist id="colors">
