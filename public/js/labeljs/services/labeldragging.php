@@ -5,7 +5,7 @@
 ?>
 
 app.factory("labelDraggingFactory", function($window, createReplayButtonFactory) {
-	var num = <?php echo $activityObj[7]; ?>;
+	var num = <?php echo $activityObj[8]; ?>;
 	var backgroundObj = new Image();
 	
 	function loadImages(sources, callback, scope) {
@@ -84,7 +84,7 @@ app.factory("labelDraggingFactory", function($window, createReplayButtonFactory)
 		var icons = {};
 		var yValue = 20;
 		
-		<?php for($i = 1; $i < ($activityObj[7] + 2); $i++) { ?>
+		<?php for($i = 1; $i < $activityObj[7]; $i++) { ?>
 				icons['num' + <?php echo $i; ?>] = { x: 620, y: yValue };
 				yValue += 35;
 		<?php } ?>
@@ -92,8 +92,8 @@ app.factory("labelDraggingFactory", function($window, createReplayButtonFactory)
 		var outlines = {};
 		
 		<?php 
-			for($i = 1; $i < ($activityObj[7] + 2); $i++) { 
-				$coordString = $activityObj[8][$i - 1];
+			for($i = 1; $i < $activityObj[7]; $i++) { 
+				$coordString = $activityObj[9][$i - 1];
 				$coordX = $coordString[0] - 25;
 				$coordY = $coordString[1] - 25;
 		?>
