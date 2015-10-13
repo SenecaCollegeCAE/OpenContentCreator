@@ -20,10 +20,11 @@
 								echo '<div class="searcherrormsg">*Search cannot be empty.';
 							else {
 								echo '<br /><h3>Search for &quot;'. $_POST['searchActivity'] . '&quot; Result:</h3><br />';
+								
 								if($searchError2)
 									echo '<h2>Search did not return any results.</h2>';
-								//else
-									//$searchResults->printResults();
+								else
+									echo "<hr /><br />". $searchResults;
 							}
 					?>
 					<br /><br /><br />
