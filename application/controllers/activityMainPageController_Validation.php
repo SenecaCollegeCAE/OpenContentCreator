@@ -23,22 +23,9 @@
 		 		//End of Validate Search Form
 		 		 
 		 		if(!$searchError1) {
-		 			$activitySearch = trim(filter_var($_POST['activitySearch'], FILTER_SANITIZE_STRING));
-		 	
-		 			require_once("../../../resources/models/Search.php"); //call the search model class
-		 			$publicSearch = new Search();
-		 	
-		 			if($publicSearch->getActivityLoggedIn($activitySearch)) {
-		 			
-		 				//Need to save it as a session so the search object with results can be passed onto the next page
-		 				session_start();
-		 				$_SESSION['loggedInSearch'] = serialize($publicSearch);
-		 				
-		 				header("Location ./activitysearch.php");
-		 				exit;
-		 			}
-		 			else
-		 				$searchError2 = true;
+		 			$activitySearch = trim(filter_var($_POST['activitySearch'], FILTER_SANITIZE_STRING)); 				
+		 			header("Location: ./activitysearch.php?search=" . $activitySearch);
+		 			exit;
 		 		}
 		 		 
 		 		break;
