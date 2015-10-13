@@ -164,7 +164,41 @@
 			}
 			
 			$dbh= null;
-		} //function editWebquestActivityFromServer()
+		} //function getWebquestActivityFromServer()
+		
+		public function getWebQuestActivityFromServerWithoutLogin($activityId) {
+			require("../../resources/connect.inc.php");
+				
+			$this->_activityId = $activityId;
+			$result = $dbh->prepare("SELECT * FROM webquest_activities WHERE webquest_id = :aId");
+			$result->execute(array('aId' => $this->_activityId));
+				
+			while($resultRow = $result->fetch(PDO::FETCH_ASSOC)) {
+				$this->_title = $resultRow['webquest_title'];
+				$this->_description = $resultRow['webquest_description'];
+				$this->_titleImage = $resultRow['webquest_image'];
+				$this->_themeColor = $resultRow['webquest_color'];
+				$this->_learningOutcomes = $resultRow['webquest_learning_outcomes'];
+				$this->_overview = $resultRow['webquest_overview'];
+				$this->_links = unserialize(base64_decode($resultRow['webquest_links']));
+				$this->_tasks = unserialize(base64_decode($resultRow['webquest_tasks']));
+				$this->_questions = unserialize(base64_decode($resultRow['webquest_questions']));
+				$this->_evaluation = $resultRow['webquest_evaluation'];
+			}
+				
+			$result2 = $dbh->prepare("SELECT * FROM activities WHERE activity_id = :aId");
+			$result2->execute(array('aId' => $this->_activityId));
+				
+			while($resultRow2 = $result2->fetch(PDO::FETCH_ASSOC)) {
+				$this->_creatorId = $resultRow2['activity_creator'];
+				$this->_activityType = $resultRow2['activity_type'];
+				$this->_publishMethod = $resultRow2['activity_publish_method'];
+				$this->_creativeCommons = $resultRow2['activity_creative_common'];
+				$this->_copyActivity = $resultRow2['activity_allow_copy'];
+			}
+				
+			$dbh= null;
+		} //function getWebquestActivityFromServerWithoutLogin()
 		
 		public function getWebquestActivity() {
 			$webquest = [];

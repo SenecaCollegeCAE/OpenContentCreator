@@ -102,5 +102,30 @@
 			
 		} //function getAllActivitiesCopiedByUser($userId)
 		
+		public function getActivityTypeWithoutLoggingIn($activityId) {
+			require_once("../../resources/connect.inc.php");
+			
+			$this->_activityId = $activityId;
+			
+			//Check if activityId is an integer
+			if(is_int($this->_activityId)) {
+				$result = $dbh->prepare("SELECT activity_type FROM activities WHERE activity_id = :aId");
+				$result->execute(array('aId' => $this->_activityId));
+				$resultNum = $result->rowCount();
+				$dbh = null;
+				
+				if($resultNum) {
+					while($resultRow = $result->fetch(PDO::FETCH_ASSOC)) {
+						$this->_activityType = $resultRow['activity_type'];
+					}
+					
+					return $this->_activityType;
+				}
+			}
+			else {
+				return "";
+			}		
+		} //function getActivityWithoutLoggingIn
+		
 	}
 ?>

@@ -213,6 +213,45 @@
 			$dbh= null; 
 		} //function getTriviaActivityFromServer
 		
+		public function getTriviaActivityFromServerWithoutLogin($activityId) {
+			require("../../resources/connect.inc.php");
+				
+			$this->_activityId = $activityId;
+			$result = $dbh->prepare("SELECT * FROM trivia_activities WHERE trivia_id = :aId");
+			$result->execute(array('aId' => $this->_activityId));
+				
+			while($resultRow = $result->fetch(PDO::FETCH_ASSOC)) {
+				$this->_title = $resultRow['trivia_title'];
+				$this->_description = $resultRow['trivia_description'];
+				$this->_titleImage = $resultRow['trivia_image'];
+				$this->_themeColor = $resultRow['trivia_color'];
+				$this->_pointStyle = $resultRow['trivia_pointstyle'];
+				$this->_lifeLines5050 = $resultRow['trivia_lifeline_5050'];
+				$this->_lifeLinesHint = $resultRow['trivia_lifeline_hint'];
+				$this->_lifeLinesAudience = $resultRow['trivia_lifeline_audience'];
+				$this->_difficulty = unserialize(base64_decode($resultRow['trivia_difficulties']));
+				$this->_questions = unserialize(base64_decode($resultRow['trivia_questions']));
+				$this->_correctAnswers = unserialize(base64_decode($resultRow['trivia_correct_answers']));
+				$this->_wrongAnswers1 = unserialize(base64_decode($resultRow['trivia_wrong_answers1']));
+				$this->_wrongAnswers2 = unserialize(base64_decode($resultRow['trivia_wrong_answers2']));
+				$this->_wrongAnswers3 = unserialize(base64_decode($resultRow['trivia_wrong_answers3']));
+				$this->_hints = unserialize(base64_decode($resultRow['trivia_hints']));
+			}
+				
+			$result2 = $dbh->prepare("SELECT * FROM activities WHERE activity_id = :aId");
+			$result2->execute(array('aId' => $this->_activityId));
+				
+			while($resultRow2 = $result2->fetch(PDO::FETCH_ASSOC)) {
+				$this->_creatorId = $resultRow2['activity_creator'];
+				$this->_activityType = $resultRow2['activity_type'];
+				$this->_publishMethod = $resultRow2['activity_publish_method'];
+				$this->_creativeCommons = $resultRow2['activity_creative_common'];
+				$this->_copyActivity = $resultRow2['activity_allow_copy'];
+			}
+				
+			$dbh= null;
+		} //function getTriviaActivityFromServerWithoutLogin
+		
 		public function getTriviaActivity() {
 			$trivia = [];
 			array_push($trivia, $this->_activityId);

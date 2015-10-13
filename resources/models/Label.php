@@ -217,6 +217,39 @@
 			$dbh= null; 
 		} //function getLabelActivityFromServer
 		
+		public function getLabelActivityFromServerWithoutLogin($activityId) {
+			require("../../resources/connect.inc.php");
+		
+			$this->_activityId = $activityId;
+			$result = $dbh->prepare("SELECT * FROM label_activities WHERE label_id = :aId");
+			$result->execute(array('aId' => $this->_activityId));
+				
+			while($resultRow = $result->fetch(PDO::FETCH_ASSOC)) {
+				$this->_title = $resultRow['label_title'];
+				$this->_description = $resultRow['label_description'];
+				$this->_titleImage = $resultRow['label_image'];
+				$this->_themeColor = $resultRow['label_color'];
+				$this->_activityImage = $resultRow['label_activity_image'];
+				$this->_labels = unserialize(base64_decode($resultRow['label_label_elements']));
+				$this->_currentLabel = $resultRow['label_click_number'] + 2;
+				$this->_numOfTimesCreateWasClicked = $resultRow['label_click_number'];
+				$this->_coordinates = unserialize(base64_decode($resultRow['label_coordinates']));
+			}
+				
+			$result2 = $dbh->prepare("SELECT * FROM activities WHERE activity_id = :aId");
+			$result2->execute(array('aId' => $this->_activityId));
+				
+			while($resultRow2 = $result2->fetch(PDO::FETCH_ASSOC)) {
+				$this->_creatorId = $resultRow2['activity_creator'];
+				$this->_activityType = $resultRow2['activity_type'];
+				$this->_publishMethod = $resultRow2['activity_publish_method'];
+				$this->_creativeCommons = $resultRow2['activity_creative_common'];
+				$this->_copyActivity = $resultRow2['activity_allow_copy'];
+			}
+				
+			$dbh= null;
+		} //function getLabelActivityFromServerWithoutLogin
+		
 		public function getLabelActivity() {
 			$label = [];
 			array_push($label, $this->_activityId);
