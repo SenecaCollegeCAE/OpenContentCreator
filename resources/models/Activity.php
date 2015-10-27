@@ -68,7 +68,7 @@
 		} //function checkForDuplicateTitle($actTitle)
 		
 		public function getTypeOfActivity($actId) {
-			require_once("../../../resources/connect.inc.php");
+			require("../../../resources/connect.inc.php");
 			
 			$this->_activityId = $actId;
 			$result = $dbh->prepare("SELECT activity_type FROM activities WHERE activity_id = :aId");
