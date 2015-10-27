@@ -64,8 +64,28 @@
 		 		break;
 		 		
 		 	case isset($_POST['activityCopyViewEditSubmit']):
-		 		header("Location: stuff4.php");
-		 		exit;
+		 		if($_POST['activityCopyViewEdit'] != 0) {
+		 			$activityType = $activity->getTypeOfActivity($_POST['activityCopyViewEdit']);
+		 					 			
+		 			switch($activityType) {
+		 				case 'webq':
+		 					header("Location: ../webquest/webquestactivity.php?activityNumber=" . $_POST['activityCopyViewEdit']);
+		 					exit;
+		 					break;
+		 						
+		 				case 'trivia':
+		 					header("Location: ../trivia/triviaactivity.php?activityNumber=" . $_POST['activityCopyViewEdit']);
+		 					exit;
+		 					break;
+		 						
+		 				case 'label':
+		 					header("Location: ../labelActivity/labelactivity.php?activityNumber=" . $_POST['activityCopyViewEdit']);
+		 					exit;
+		 					break;
+		 						
+		 				default:
+		 			}
+		 		}	 		
 		 		break;
 		 		
 		 	default:
