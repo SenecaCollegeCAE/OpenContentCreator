@@ -458,6 +458,11 @@ ul > li {
 	margin-top: 10px;
 }
 
+ol {
+	display: block;
+	height: 100%;
+}
+
 
 /****************** activity.php ******************/
 
