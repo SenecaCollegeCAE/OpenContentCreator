@@ -10,6 +10,12 @@
 			if(isset($_GET['submit']) && $_GET['submit'] == "yes") //Pops up when user submits successful data from the activity forms
 				echo "<script src='../../../public/js/submitsuccess.js'></script>";
 			
+			if(isset($_GET['copy']) && $_GET['copy'] == "false") //Pops up when user fails to copy an activity for some reason
+				echo "<script src='../../../public/js/copyfalse.js'></script>";
+			
+			if(isset($_GET['copy']) && $_GET['copy'] == "true") //Pops up when user successfully copy an activity from the search area
+				echo "<script src='../../../public/js/copytrue.js'></script>";
+			
 			//Top Navigation bar 
 			require_once("../../../resources/templates/navigation.php");
 			navigationBody($userInfoArray[1], "./");
@@ -50,11 +56,15 @@
 					?>
 						<br /><br />
 					<h2>Make A Copy Of Your Own Activity</h2>
-					<p>Please choose an activity to make a copy of. For convenience, please rename the activity right away.</p>
+					<p>Please choose an activity to make a copy of. <span class="bold">For convenience, please rename your activity right away.</span></p>
 					<select name="activitySelfCopy" class="length">
 						<option value="0">Select activity to copy</option>
 						<?php 
-							//Get user activity from database for the user currently logined
+							//Get user activity from database for the user currently logined for copying
+							$allActivitiesCreatedByUserKeys = array_keys($allActivitiesCreatedByUser);
+							for($i = 0; $i < count($allActivitiesCreatedByUser); $i++) {
+								echo "<option value='" . $allActivitiesCreatedByUserKeys[$i] . "'>" . $allActivitiesCreatedByUser[$allActivitiesCreatedByUserKeys[$i]] . "</option>";
+							}
 						?>
 					</select> &nbsp;<input type="submit" name="activitySelfCopySubmit" value="Copy" style="margin-top: -5px;" />
 						<br /><br />
@@ -72,11 +82,15 @@
 					</select> &nbsp;<input type="submit" name="activityViewEditSubmit" value="View & Edit" style="margin-top: -5px;" />
 						<br /><br />
 					<h2>View And Edit Copied Activity</h2>
-					<p>View and edit an activity that you have copied from the OCC community.</p>
+					<p>View and edit an activity that you have copied from the OCC community. <span class="bold">For convenience, please rename the copied activity right away.</span></p>
 					<select name="activityCopyViewEdit" class="length">
 						<option value="0">Select activity to view and edit</option></body>
-						<?php 
-							//get user copied activity created by other users from database
+						<?php
+							//get all activities copied by the user from the search
+							$allActivitiesCopiedByUserkeys = array_keys($allActivitiesCopiedByUser);
+							for($i = 0; $i < count($allActivitiesCopiedByUser); $i++) {
+								echo "<option value='" . $allActivitiesCopiedByUserkeys[$i] . "'>" . $allActivitiesCopiedByUser[$allActivitiesCopiedByUserkeys[$i]] . "</option>";
+							}
 						?>
 					</select> &nbsp;<input type="submit" name="activityCopyViewEditSubmit" value="View & Edit" style="margin-top: -5px;" />
 				</form>
