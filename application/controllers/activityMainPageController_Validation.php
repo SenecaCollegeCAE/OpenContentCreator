@@ -10,8 +10,10 @@
 	}
 	
 	//Prepopulate values into the drop down menus
-	if(empty($_POST))
+	if(empty($_POST)) {
 		$allActivitiesCreatedByUser = $activity->getAllActitivesCreatedByUser($userInfoArray[0]);
+		$allActivitiesCopiedByUser = $activity->getAllActivitiesCopiedByUser($userInfoArray[0]);
+	}
 	else {
 		 switch(true) {
 		 	case isset($_POST['activitySearchSubmit']):
@@ -31,6 +33,7 @@
 		 		break;
 		 	
 		 	case isset($_POST['activitySelfCopySubmit']):
+		 		require_once("../../controllers/helpers/copyYourOwnActivity.php");
 		 		header("Location: stuff2.php");
 		 		exit;
 		 		break;

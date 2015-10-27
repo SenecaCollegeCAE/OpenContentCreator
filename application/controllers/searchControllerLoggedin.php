@@ -6,9 +6,9 @@
 		
 		require_once("../../../resources/models/Search.php"); //call the search model class
 		$publicSearch = new Search();
-				
+		
 		if($publicSearch->getActivityLoggedIn($searchValue)) {
-			$searchResults = $publicSearch->printResults();
+			$searchResults = $publicSearch->printResultsAndCopy($userInfoArray[0]);
 		}
 		else {
 			$searchError2 = true;
