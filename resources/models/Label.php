@@ -96,8 +96,9 @@
 			$this->_creatorId = $userId;
 			$this->_time = date("Y-m-d h:i:s");
 			$this->_activityType = 'label';
+			$this->_copied = 'no';
 			
-			$result = $dbh->prepare("INSERT INTO activities VALUES(:activityId, :userId, :title, :type, :publishMethod, :creativeCommon, :allowCopy, :time)");
+			$result = $dbh->prepare("INSERT INTO activities VALUES(:activityId, :userId, :title, :type, :publishMethod, :creativeCommon, :allowCopy, :time, :copied)");
 			$result->execute(array(
 					'activityId' => '',
 					'userId' => $this->_creatorId,
@@ -106,7 +107,8 @@
 					'publishMethod' => $this->_publishMethod,
 					'creativeCommon' => $this->_creativeCommons,
 					'allowCopy' => $this->_copyActivity,
-					'time' => $this->_time
+					'time' => $this->_time,
+					'copied' => $this->_copied
 			));
 			
 			//need to get the activityId generated and use it for the trivia here
