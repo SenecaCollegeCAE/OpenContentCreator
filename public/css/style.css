@@ -441,8 +441,17 @@ div.rightsearchresult {
 	display: inline-block;
 	width: 80%;
 	height: 100%;
+	float: middle;
+	text-align: left;
+}
+
+div.veryright {
+	display: block;
+	width: 30%;
+	height: 50%;
 	float: right;
 	text-align: left;
+	margin-top: -40px;
 }
 
 ul > li {
@@ -626,6 +635,10 @@ div.activityerrormsg {
 
 select.length {
 	width: 240px;
+}
+
+span.bold {
+	font-weight: bold;
 }
 
 /****************** webquest.php ******************/
